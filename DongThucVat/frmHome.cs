@@ -293,5 +293,14 @@ namespace DongThucVat
         {
 
         }
+
+        private void btThongKe_Click(object sender, EventArgs e)
+        {
+            moveSidePanel(btThongKe);
+            ucThongKe uc = new ucThongKe();
+            AddControlsToPanel(uc);
+            btBack.Visible = false;
+            lbTieuDe.Visible = true;
+        }
     }
 }

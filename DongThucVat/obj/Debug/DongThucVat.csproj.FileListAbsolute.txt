@@ -36,3 +36,13 @@ C:\Users\Dell\source\repos\DongThucVat\DongThucVat\obj\Debug\DongThucVat.applica
 C:\Users\Dell\source\repos\DongThucVat\DongThucVat\obj\Debug\DongThucVat.textEffect.resources
 C:\Users\Dell\source\repos\DongThucVat\DongThucVat\obj\Debug\DongThucVat.frmZoomAnh.resources
 C:\Users\Dell\source\repos\DongThucVat\DongThucVat\obj\Debug\DongThucVat.csproj.AssemblyReference.cache
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\DocumentFormat.OpenXml.dll
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\DocumentFormat.OpenXml.Framework.dll
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\DocumentFormat.OpenXml.xml
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\DocumentFormat.OpenXml.Framework.xml
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\obj\Debug\DongThucVat.ucThongKe.resources
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\obj\Debug\DongThucVat.csproj.CopyComplete
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\EPPlus.dll
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\EPPlus.xml

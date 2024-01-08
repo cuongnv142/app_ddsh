@@ -36,13 +36,13 @@ namespace DongThucVat
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbTime = new System.Windows.Forms.Label();
             this.lbRole = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lbFirstName = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.btMini = new System.Windows.Forms.Button();
             this.btLogOut = new System.Windows.Forms.Button();
-            this.btBack = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbFirstName = new System.Windows.Forms.Label();
             this.btClose = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btBack = new System.Windows.Forms.Button();
             this.panelSide = new System.Windows.Forms.Panel();
             this.btSettings = new System.Windows.Forms.Button();
             this.btnUsers = new System.Windows.Forms.Button();
@@ -50,6 +50,7 @@ namespace DongThucVat
             this.btDongVat = new System.Windows.Forms.Button();
             this.btHome = new System.Windows.Forms.Button();
             this.panelLeft = new System.Windows.Forms.Panel();
+            this.btThongKe = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.timerTime = new System.Windows.Forms.Timer(this.components);
@@ -125,42 +126,6 @@ namespace DongThucVat
             this.lbRole.TabIndex = 12;
             this.lbRole.Text = ".";
             // 
-            // label6
-            // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(25, 43);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 21);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Quyền:";
-            // 
-            // lbFirstName
-            // 
-            this.lbFirstName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbFirstName.AutoSize = true;
-            this.lbFirstName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
-            this.lbFirstName.Location = new System.Drawing.Point(92, 11);
-            this.lbFirstName.Name = "lbFirstName";
-            this.lbFirstName.Size = new System.Drawing.Size(14, 21);
-            this.lbFirstName.TabIndex = 10;
-            this.lbFirstName.Text = ".";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 21);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Welcome:";
-            // 
             // btMini
             // 
             this.btMini.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -197,22 +162,29 @@ namespace DongThucVat
             this.btLogOut.UseVisualStyleBackColor = true;
             this.btLogOut.Click += new System.EventHandler(this.btLogOut_Click);
             // 
-            // btBack
+            // label6
             // 
-            this.btBack.FlatAppearance.BorderSize = 0;
-            this.btBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btBack.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBack.ForeColor = System.Drawing.Color.White;
-            this.btBack.Image = ((System.Drawing.Image)(resources.GetObject("btBack.Image")));
-            this.btBack.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btBack.Location = new System.Drawing.Point(0, 0);
-            this.btBack.Name = "btBack";
-            this.btBack.Size = new System.Drawing.Size(107, 92);
-            this.btBack.TabIndex = 0;
-            this.btBack.Text = "Trở lại";
-            this.btBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btBack.UseVisualStyleBackColor = true;
-            this.btBack.Click += new System.EventHandler(this.btBack_Click);
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(25, 43);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 21);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Quyền:";
+            // 
+            // lbFirstName
+            // 
+            this.lbFirstName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbFirstName.AutoSize = true;
+            this.lbFirstName.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFirstName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(193)))), ((int)(((byte)(7)))));
+            this.lbFirstName.Location = new System.Drawing.Point(92, 11);
+            this.lbFirstName.Name = "lbFirstName";
+            this.lbFirstName.Size = new System.Drawing.Size(14, 21);
+            this.lbFirstName.TabIndex = 10;
+            this.lbFirstName.Text = ".";
             // 
             // btClose
             // 
@@ -232,6 +204,35 @@ namespace DongThucVat
             this.btClose.UseVisualStyleBackColor = true;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 21);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Welcome:";
+            // 
+            // btBack
+            // 
+            this.btBack.FlatAppearance.BorderSize = 0;
+            this.btBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btBack.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btBack.ForeColor = System.Drawing.Color.White;
+            this.btBack.Image = ((System.Drawing.Image)(resources.GetObject("btBack.Image")));
+            this.btBack.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btBack.Location = new System.Drawing.Point(0, 0);
+            this.btBack.Name = "btBack";
+            this.btBack.Size = new System.Drawing.Size(107, 92);
+            this.btBack.TabIndex = 0;
+            this.btBack.Text = "Trở lại";
+            this.btBack.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btBack.UseVisualStyleBackColor = true;
+            this.btBack.Click += new System.EventHandler(this.btBack_Click);
+            // 
             // panelSide
             // 
             this.panelSide.BackColor = System.Drawing.Color.White;
@@ -248,7 +249,7 @@ namespace DongThucVat
             this.btSettings.ForeColor = System.Drawing.Color.White;
             this.btSettings.Image = ((System.Drawing.Image)(resources.GetObject("btSettings.Image")));
             this.btSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btSettings.Location = new System.Drawing.Point(12, 412);
+            this.btSettings.Location = new System.Drawing.Point(13, 522);
             this.btSettings.Name = "btSettings";
             this.btSettings.Size = new System.Drawing.Size(151, 80);
             this.btSettings.TabIndex = 4;
@@ -265,7 +266,7 @@ namespace DongThucVat
             this.btnUsers.ForeColor = System.Drawing.Color.White;
             this.btnUsers.Image = ((System.Drawing.Image)(resources.GetObject("btnUsers.Image")));
             this.btnUsers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsers.Location = new System.Drawing.Point(12, 332);
+            this.btnUsers.Location = new System.Drawing.Point(12, 350);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.Size = new System.Drawing.Size(151, 80);
             this.btnUsers.TabIndex = 3;
@@ -282,7 +283,7 @@ namespace DongThucVat
             this.btThucVat.ForeColor = System.Drawing.Color.White;
             this.btThucVat.Image = ((System.Drawing.Image)(resources.GetObject("btThucVat.Image")));
             this.btThucVat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btThucVat.Location = new System.Drawing.Point(13, 252);
+            this.btThucVat.Location = new System.Drawing.Point(13, 264);
             this.btThucVat.Name = "btThucVat";
             this.btThucVat.Size = new System.Drawing.Size(151, 80);
             this.btThucVat.TabIndex = 2;
@@ -299,7 +300,7 @@ namespace DongThucVat
             this.btDongVat.ForeColor = System.Drawing.Color.White;
             this.btDongVat.Image = ((System.Drawing.Image)(resources.GetObject("btDongVat.Image")));
             this.btDongVat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btDongVat.Location = new System.Drawing.Point(13, 172);
+            this.btDongVat.Location = new System.Drawing.Point(13, 178);
             this.btDongVat.Name = "btDongVat";
             this.btDongVat.Size = new System.Drawing.Size(151, 80);
             this.btDongVat.TabIndex = 1;
@@ -328,6 +329,7 @@ namespace DongThucVat
             // panelLeft
             // 
             this.panelLeft.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(24)))));
+            this.panelLeft.Controls.Add(this.btThongKe);
             this.panelLeft.Controls.Add(this.panelSide);
             this.panelLeft.Controls.Add(this.btSettings);
             this.panelLeft.Controls.Add(this.btnUsers);
@@ -340,6 +342,23 @@ namespace DongThucVat
             this.panelLeft.Name = "panelLeft";
             this.panelLeft.Size = new System.Drawing.Size(163, 720);
             this.panelLeft.TabIndex = 4;
+            // 
+            // btThongKe
+            // 
+            this.btThongKe.FlatAppearance.BorderSize = 0;
+            this.btThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btThongKe.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btThongKe.ForeColor = System.Drawing.Color.White;
+            this.btThongKe.Image = ((System.Drawing.Image)(resources.GetObject("btThongKe.Image")));
+            this.btThongKe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btThongKe.Location = new System.Drawing.Point(13, 436);
+            this.btThongKe.Name = "btThongKe";
+            this.btThongKe.Size = new System.Drawing.Size(151, 80);
+            this.btThongKe.TabIndex = 7;
+            this.btThongKe.Text = " Thống kê";
+            this.btThongKe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btThongKe.UseVisualStyleBackColor = true;
+            this.btThongKe.Click += new System.EventHandler(this.btThongKe_Click);
             // 
             // panel3
             // 
@@ -423,5 +442,6 @@ namespace DongThucVat
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbTieuDe;
         private System.Windows.Forms.PictureBox pbLogo;
+        private System.Windows.Forms.Button btThongKe;
     }
 }

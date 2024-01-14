@@ -31,14 +31,18 @@ namespace DongThucVat
         {
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbThongBao = new System.Windows.Forms.Label();
             this.btExportChiTiet = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.btExportTongQuan = new System.Windows.Forms.Button();
+            this.btExportTongQuanDongVat = new System.Windows.Forms.Button();
+            this.btExportTongQuanThucVat = new System.Windows.Forms.Button();
+            this.btExportChiTietThucVat = new System.Windows.Forms.Button();
+            this.btExportChiTietDongVat = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -57,37 +61,23 @@ namespace DongThucVat
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.btExportChiTietThucVat);
             this.groupBox1.Controls.Add(this.lbThongBao);
+            this.groupBox1.Controls.Add(this.btExportChiTietDongVat);
             this.groupBox1.Controls.Add(this.btExportChiTiet);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(207, 317);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(427, 146);
+            this.groupBox1.Size = new System.Drawing.Size(754, 146);
             this.groupBox1.TabIndex = 61;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thống kê chi tiết";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.dateTimePickerFrom);
-            this.groupBox2.Controls.Add(this.dateTimePickerTo);
-            this.groupBox2.Controls.Add(this.btExportTongQuan);
-            this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(207, 108);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(754, 155);
-            this.groupBox2.TabIndex = 62;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Thống kê tổng quan";
             // 
             // lbThongBao
             // 
             this.lbThongBao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbThongBao.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbThongBao.Location = new System.Drawing.Point(28, 46);
+            this.lbThongBao.Location = new System.Drawing.Point(119, 43);
             this.lbThongBao.Name = "lbThongBao";
             this.lbThongBao.Size = new System.Drawing.Size(373, 25);
             this.lbThongBao.TabIndex = 62;
@@ -104,6 +94,24 @@ namespace DongThucVat
             this.btExportChiTiet.Text = "Xuất file";
             this.btExportChiTiet.UseVisualStyleBackColor = true;
             this.btExportChiTiet.Click += new System.EventHandler(this.btExportChiTiet_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox2.Controls.Add(this.btExportTongQuanThucVat);
+            this.groupBox2.Controls.Add(this.btExportTongQuanDongVat);
+            this.groupBox2.Controls.Add(this.label3);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.dateTimePickerFrom);
+            this.groupBox2.Controls.Add(this.dateTimePickerTo);
+            this.groupBox2.Controls.Add(this.btExportTongQuan);
+            this.groupBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.Location = new System.Drawing.Point(207, 108);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(754, 155);
+            this.groupBox2.TabIndex = 62;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Thống kê tổng quan";
             // 
             // label3
             // 
@@ -165,6 +173,54 @@ namespace DongThucVat
             this.btExportTongQuan.UseVisualStyleBackColor = true;
             this.btExportTongQuan.Click += new System.EventHandler(this.btExportTongQuan_Click_1);
             // 
+            // btExportTongQuanDongVat
+            // 
+            this.btExportTongQuanDongVat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btExportTongQuanDongVat.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExportTongQuanDongVat.Location = new System.Drawing.Point(279, 94);
+            this.btExportTongQuanDongVat.Name = "btExportTongQuanDongVat";
+            this.btExportTongQuanDongVat.Size = new System.Drawing.Size(200, 41);
+            this.btExportTongQuanDongVat.TabIndex = 65;
+            this.btExportTongQuanDongVat.Text = "Xuất file động vật";
+            this.btExportTongQuanDongVat.UseVisualStyleBackColor = true;
+            this.btExportTongQuanDongVat.Click += new System.EventHandler(this.btExportTongQuanDongVat_Click);
+            // 
+            // btExportTongQuanThucVat
+            // 
+            this.btExportTongQuanThucVat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btExportTongQuanThucVat.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExportTongQuanThucVat.Location = new System.Drawing.Point(515, 94);
+            this.btExportTongQuanThucVat.Name = "btExportTongQuanThucVat";
+            this.btExportTongQuanThucVat.Size = new System.Drawing.Size(200, 41);
+            this.btExportTongQuanThucVat.TabIndex = 66;
+            this.btExportTongQuanThucVat.Text = "Xuất file thực vật";
+            this.btExportTongQuanThucVat.UseVisualStyleBackColor = true;
+            this.btExportTongQuanThucVat.Click += new System.EventHandler(this.btExportTongQuanThucVat_Click);
+            // 
+            // btExportChiTietThucVat
+            // 
+            this.btExportChiTietThucVat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btExportChiTietThucVat.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExportChiTietThucVat.Location = new System.Drawing.Point(515, 85);
+            this.btExportChiTietThucVat.Name = "btExportChiTietThucVat";
+            this.btExportChiTietThucVat.Size = new System.Drawing.Size(200, 41);
+            this.btExportChiTietThucVat.TabIndex = 68;
+            this.btExportChiTietThucVat.Text = "Xuất file thực vật";
+            this.btExportChiTietThucVat.UseVisualStyleBackColor = true;
+            this.btExportChiTietThucVat.Click += new System.EventHandler(this.btExportChiTietThucVat_Click);
+            // 
+            // btExportChiTietDongVat
+            // 
+            this.btExportChiTietDongVat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btExportChiTietDongVat.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExportChiTietDongVat.Location = new System.Drawing.Point(279, 85);
+            this.btExportChiTietDongVat.Name = "btExportChiTietDongVat";
+            this.btExportChiTietDongVat.Size = new System.Drawing.Size(200, 41);
+            this.btExportChiTietDongVat.TabIndex = 67;
+            this.btExportChiTietDongVat.Text = "Xuất file động vật";
+            this.btExportChiTietDongVat.UseVisualStyleBackColor = true;
+            this.btExportChiTietDongVat.Click += new System.EventHandler(this.btExportChiTietDongVat_Click);
+            // 
             // ucThongKe
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -196,5 +252,9 @@ namespace DongThucVat
         private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
         private System.Windows.Forms.DateTimePicker dateTimePickerTo;
         private System.Windows.Forms.Button btExportTongQuan;
+        private System.Windows.Forms.Button btExportTongQuanThucVat;
+        private System.Windows.Forms.Button btExportTongQuanDongVat;
+        private System.Windows.Forms.Button btExportChiTietThucVat;
+        private System.Windows.Forms.Button btExportChiTietDongVat;
     }
 }

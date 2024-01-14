@@ -162,7 +162,13 @@ namespace DongThucVat
 
             if (kqList != null && kqList.Count > 0)
             {
-                ucListItem[] listItem = new ucListItem[endIndex - startIndex];
+                int arrayLength = endIndex - startIndex;
+                if (arrayLength < 0)
+                {
+                    arrayLength = 0; // Đảm bảo không có số âm
+                }
+
+                ucListItem[] listItem = new ucListItem[arrayLength];
                 for (int i = startIndex; i < endIndex; i++)
                 {
                     listItem[i - startIndex] = new ucListItem();

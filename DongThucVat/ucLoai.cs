@@ -19,6 +19,10 @@ namespace DongThucVat
         int id, idFK;
         DataGridViewCellMouseEventArgs vitri;
 
+        private int totalRows = 0;
+        private int totalPages = 0;
+        private int currentPage = 1;
+        private int pageSize = 250; // Số bản ghi trên mỗi trang
         private int loai;
         private string idUser;
         public int loaiLoai { get => loai; set => loai = value; }
@@ -54,10 +58,21 @@ namespace DongThucVat
             using (SqlConnection conn = Connect.ConnectDB())
             {
                 conn.Open();
+                int offset = (currentPage - 1) * pageSize;
                 if (idFK == 0)
-                    sql = "SELECT l.*, h.name AS namefk FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id WHERE l.loai = " + loai;
+                    sql = $@"SELECT * FROM (
+                        SELECT l.*, h.name AS namefk, ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS RowNum
+                        FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
+                        WHERE l.loai = {loai}
+                     ) AS NumberedRows
+                     WHERE RowNum > {offset} AND RowNum <= {offset + pageSize}";
                 else
-                    sql = "SELECT l.*, h.name AS namefk FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id WHERE l.loai = " + loai + " AND l.id_dtv_ho = " + cb.SelectedValue;
+                    sql = $@"SELECT * FROM (
+                        SELECT l.*, h.name AS namefk, ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS RowNum
+                        FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
+                        WHERE l.loai = {loai} AND l.id_dtv_ho = {cb.SelectedValue}
+                     ) AS NumberedRows
+                     WHERE RowNum > {offset} AND RowNum <= {offset + pageSize}";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -65,6 +80,12 @@ namespace DongThucVat
                     {
                         DataTable dtGRV = new DataTable();
                         daGRV.Fill(dtGRV);
+
+                        totalRows = dtGRV.Rows.Count; // Cập nhật tổng số hàng
+
+                        // Tính toán số trang
+                        totalPages = (int)Math.Ceiling((double)totalRows / pageSize);
+
                         await Task.Delay(500);
                         dgv.DataSource = dtGRV;
                         dgv.Refresh();
@@ -103,6 +124,7 @@ namespace DongThucVat
             // Load dữ liệu từ cơ sở dữ liệu không làm lag ứng dụng
             await Task.Run(() => dgvLoad());
             vitri = null;
+            UpdateNavigationButtons(); // Cập nhật trạng thái của nút sau khi làm mới
         }
 
         private void btSua_Click(object sender, EventArgs e)
@@ -199,6 +221,35 @@ namespace DongThucVat
             }
         }
 
+        private void UpdateNavigationButtons()
+        {
+            // Kiểm tra nếu đang ở trang đầu thì tắt nút Previous
+            btPrev.Enabled = currentPage > 1;
+
+            // Kiểm tra nếu đang ở trang cuối thì tắt nút Next
+            btNext.Enabled = currentPage < totalPages;
+        }
+
+        private void btNext_Click(object sender, EventArgs e)
+        {
+            if (currentPage < totalPages)
+            {
+                currentPage++;
+                dgvLoad();
+                UpdateNavigationButtons(); // Cập nhật trạng thái của nút sau khi chuyển trang
+            }
+        }
+
+        private void btPrev_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 1)
+            {
+                currentPage--;
+                dgvLoad();
+                UpdateNavigationButtons(); // Cập nhật trạng thái của nút sau khi chuyển trang
+            }
+        }
+
         private void cb_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cb.SelectedItem is DataRowView selectedItem)
@@ -213,8 +264,12 @@ namespace DongThucVat
                     idFK = 0;
                 }
             }
+
+            // Cập nhật kích thước trang khi chọn họ mới
+            pageSize = 250; // Đặt kích thước trang mặc định, bạn có thể điều chỉnh theo mong muốn
             dgvLoad();
             vitri = null;
+            UpdateNavigationButtons(); // Cập nhật trạng thái của nút sau khi chuyển họ
         }
     }
 }

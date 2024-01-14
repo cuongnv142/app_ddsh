@@ -62,9 +62,15 @@ namespace DongThucVat
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btPrev = new System.Windows.Forms.Button();
+            this.btNext = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cb
@@ -227,12 +233,12 @@ namespace DongThucVat
             this.Column10,
             this.Column11});
             this.dgv.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv.Location = new System.Drawing.Point(5, 126);
+            this.dgv.Location = new System.Drawing.Point(0, 0);
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(1107, 497);
+            this.dgv.Size = new System.Drawing.Size(1107, 466);
             this.dgv.TabIndex = 0;
             this.dgv.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseClick);
             this.dgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
@@ -405,11 +411,53 @@ namespace DongThucVat
             this.Column11.ReadOnly = true;
             this.Column11.Width = 300;
             // 
+            // btPrev
+            // 
+            this.btPrev.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btPrev.Location = new System.Drawing.Point(16, 3);
+            this.btPrev.Name = "btPrev";
+            this.btPrev.Size = new System.Drawing.Size(75, 26);
+            this.btPrev.TabIndex = 0;
+            this.btPrev.Text = "<<";
+            this.btPrev.UseVisualStyleBackColor = true;
+            this.btPrev.Click += new System.EventHandler(this.btPrev_Click);
+            // 
+            // btNext
+            // 
+            this.btNext.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btNext.Location = new System.Drawing.Point(97, 3);
+            this.btNext.Name = "btNext";
+            this.btNext.Size = new System.Drawing.Size(75, 26);
+            this.btNext.TabIndex = 1;
+            this.btNext.Text = ">>";
+            this.btNext.UseVisualStyleBackColor = true;
+            this.btNext.Click += new System.EventHandler(this.btNext_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btPrev);
+            this.panel3.Controls.Add(this.btNext);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(5, 592);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1107, 31);
+            this.panel3.TabIndex = 21;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgv);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(5, 126);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1107, 466);
+            this.panel1.TabIndex = 22;
+            // 
             // ucLoai
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.dgv);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel5);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "ucLoai";
@@ -421,6 +469,8 @@ namespace DongThucVat
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -458,5 +508,9 @@ namespace DongThucVat
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lbTieuDe;
+        private System.Windows.Forms.Button btNext;
+        private System.Windows.Forms.Button btPrev;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel1;
     }
 }

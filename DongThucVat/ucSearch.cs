@@ -153,7 +153,7 @@ namespace DongThucVat
             cbHo.ValueMember = "id";
         }
 
-        public void listItemLoad()
+        public async Task listItemLoadAsync()
         {
             fpnlKetQua.Controls.Clear();
 
@@ -178,7 +178,7 @@ namespace DongThucVat
                         KetQua kq = kqList[i];
 
                         // Gán giá trị từ kq vào listItem[i]
-                        string hinhanhloai = anhListItemLoad(kq.ID);
+                        string hinhanhloai = await anhListItemLoadAsync(kq.ID);
                         if (!string.IsNullOrWhiteSpace(hinhanhloai))
                         {
                             listItem[i - startIndex].Anh = hinhanhloai;
@@ -243,7 +243,7 @@ namespace DongThucVat
             }
         }
 
-        public string anhListItemLoad(string idloai)
+        public async Task<string> anhListItemLoadAsync(string idloai)
         {
             hinhanh = "";
             string loaiFolderPath = pictureFolder + "\\" + idloai.ToString();
@@ -287,7 +287,7 @@ namespace DongThucVat
             return hinhanh;
         }
 
-        private void ucSearch_Load(object sender, EventArgs e)
+        private async void ucSearch_Load(object sender, EventArgs e)
         {
             conn = Connect.ConnectDB();
             fpnlKetQua.Controls.Clear();
@@ -296,7 +296,7 @@ namespace DongThucVat
             cbBoLoad();
             cbHoLoad();
             cbIUCN.SelectedIndex = 0; cbSDVN.SelectedIndex = 0; cbND84.SelectedIndex = 0; cbND64.SelectedIndex = 0;
-            dgvLoad();
+            await dgvLoadAsync();
         }
 
         private void cbNganh_SelectedIndexChanged(object sender, EventArgs e)
@@ -319,7 +319,9 @@ namespace DongThucVat
 
         private void btTim_Click(object sender, EventArgs e)
         {
-            dgvLoad();
+            fpnlKetQua.Controls.Clear();
+            currentPage = 1;
+            dgvLoadAsync();
         }
 
         private void dgv_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -345,7 +347,7 @@ namespace DongThucVat
             }
         }
 
-        public void dgvLoad()
+        public async Task dgvLoadAsync()
         {
             if (conn.State != ConnectionState.Open)
                 conn.Open();
@@ -362,7 +364,7 @@ namespace DongThucVat
             cmd.Parameters.Add("@muc_do_bao_ton_ndcp", SqlDbType.NVarChar).Value = cbND84.SelectedIndex == 0 ? "" : cbND84.SelectedItem?.ToString();
             cmd.Parameters.Add("@muc_do_bao_ton_nd64cp", SqlDbType.NVarChar).Value = cbND64.SelectedIndex <= 0 ? "" : cbND64.SelectedItem?.ToString();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.ExecuteNonQuery();
+            await cmd.ExecuteNonQueryAsync();
 
             SqlDataAdapter daGRV = new SqlDataAdapter();
             daGRV.SelectCommand = cmd;
@@ -401,7 +403,7 @@ namespace DongThucVat
                 }
             }
 
-            listItemLoad();
+            await listItemLoadAsync();
         }
 
         private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -414,7 +416,7 @@ namespace DongThucVat
             if (currentPage > 1)
             {
                 currentPage--;
-                listItemLoad();
+                listItemLoadAsync();
             }
         }
 
@@ -423,7 +425,7 @@ namespace DongThucVat
             if (currentPage < Math.Ceiling((double)kqList.Count / rowsPerPage))
             {
                 currentPage++;
-                listItemLoad();
+                listItemLoadAsync();
             }
         }
 

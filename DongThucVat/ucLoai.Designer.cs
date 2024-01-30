@@ -41,6 +41,10 @@ namespace DongThucVat
             this.btXoa = new System.Windows.Forms.Button();
             this.btSua = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.btPrev = new System.Windows.Forms.Button();
+            this.btNext = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,10 +66,6 @@ namespace DongThucVat
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btPrev = new System.Windows.Forms.Button();
-            this.btNext = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -241,14 +241,55 @@ namespace DongThucVat
             this.dgv.Size = new System.Drawing.Size(1107, 466);
             this.dgv.TabIndex = 0;
             this.dgv.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseClick);
-            this.dgv.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgv_DataBindingComplete);
+            // 
+            // btPrev
+            // 
+            this.btPrev.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btPrev.Location = new System.Drawing.Point(16, 3);
+            this.btPrev.Name = "btPrev";
+            this.btPrev.Size = new System.Drawing.Size(75, 26);
+            this.btPrev.TabIndex = 0;
+            this.btPrev.Text = "<<";
+            this.btPrev.UseVisualStyleBackColor = true;
+            this.btPrev.Click += new System.EventHandler(this.btPrev_Click);
+            // 
+            // btNext
+            // 
+            this.btNext.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btNext.Location = new System.Drawing.Point(97, 3);
+            this.btNext.Name = "btNext";
+            this.btNext.Size = new System.Drawing.Size(75, 26);
+            this.btNext.TabIndex = 1;
+            this.btNext.Text = ">>";
+            this.btNext.UseVisualStyleBackColor = true;
+            this.btNext.Click += new System.EventHandler(this.btNext_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.btPrev);
+            this.panel3.Controls.Add(this.btNext);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(5, 592);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1107, 31);
+            this.panel3.TabIndex = 21;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.dgv);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(5, 126);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1107, 466);
+            this.panel1.TabIndex = 22;
             // 
             // STT
             // 
+            this.STT.DataPropertyName = "STT";
             this.STT.HeaderText = "STT";
             this.STT.Name = "STT";
             this.STT.ReadOnly = true;
-            this.STT.Width = 40;
+            this.STT.Width = 60;
             // 
             // Column1
             // 
@@ -411,47 +452,6 @@ namespace DongThucVat
             this.Column11.ReadOnly = true;
             this.Column11.Width = 300;
             // 
-            // btPrev
-            // 
-            this.btPrev.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btPrev.Location = new System.Drawing.Point(16, 3);
-            this.btPrev.Name = "btPrev";
-            this.btPrev.Size = new System.Drawing.Size(75, 26);
-            this.btPrev.TabIndex = 0;
-            this.btPrev.Text = "<<";
-            this.btPrev.UseVisualStyleBackColor = true;
-            this.btPrev.Click += new System.EventHandler(this.btPrev_Click);
-            // 
-            // btNext
-            // 
-            this.btNext.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btNext.Location = new System.Drawing.Point(97, 3);
-            this.btNext.Name = "btNext";
-            this.btNext.Size = new System.Drawing.Size(75, 26);
-            this.btNext.TabIndex = 1;
-            this.btNext.Text = ">>";
-            this.btNext.UseVisualStyleBackColor = true;
-            this.btNext.Click += new System.EventHandler(this.btNext_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.btPrev);
-            this.panel3.Controls.Add(this.btNext);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(5, 592);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1107, 31);
-            this.panel3.TabIndex = 21;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dgv);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(5, 126);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1107, 466);
-            this.panel1.TabIndex = 22;
-            // 
             // ucLoai
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -485,6 +485,12 @@ namespace DongThucVat
         private System.Windows.Forms.Button btSua;
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lbTieuDe;
+        private System.Windows.Forms.Button btNext;
+        private System.Windows.Forms.Button btPrev;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -506,11 +512,5 @@ namespace DongThucVat
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lbTieuDe;
-        private System.Windows.Forms.Button btNext;
-        private System.Windows.Forms.Button btPrev;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel1;
     }
 }

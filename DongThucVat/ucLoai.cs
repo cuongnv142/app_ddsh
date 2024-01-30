@@ -22,7 +22,7 @@ namespace DongThucVat
         private int totalRows = 0;
         private int totalPages = 0;
         private int currentPage = 1;
-        private int pageSize = 250; // Số bản ghi trên mỗi trang
+        private int pageSize = 300; // Số bản ghi trên mỗi trang
         private int loai;
         private string idUser;
         public int loaiLoai { get => loai; set => loai = value; }
@@ -58,21 +58,30 @@ namespace DongThucVat
             using (SqlConnection conn = Connect.ConnectDB())
             {
                 conn.Open();
+                // Lấy tổng số dòng dữ liệu trong bảng "Loai"
+                string countSql = $"SELECT COUNT(*) FROM Loai WHERE loai = {loai}";
+                SqlCommand countCmd = new SqlCommand(countSql, conn);
+                int totalRows = (int)countCmd.ExecuteScalar();
+                countCmd.Dispose();
+
+                // Tính totalPages
+                int totalPages = (int)Math.Ceiling((double)totalRows / pageSize);
+
                 int offset = (currentPage - 1) * pageSize;
                 if (idFK == 0)
                     sql = $@"SELECT * FROM (
-                        SELECT l.*, h.name AS namefk, ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS RowNum
+                        SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS STT, l.*, h.name AS namefk
                         FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
                         WHERE l.loai = {loai}
                      ) AS NumberedRows
-                     WHERE RowNum > {offset} AND RowNum <= {offset + pageSize}";
+                     WHERE STT > {offset} AND STT <= {offset + pageSize}";
                 else
                     sql = $@"SELECT * FROM (
-                        SELECT l.*, h.name AS namefk, ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS RowNum
+                        SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS STT, l.*, h.name AS namefk
                         FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
                         WHERE l.loai = {loai} AND l.id_dtv_ho = {cb.SelectedValue}
                      ) AS NumberedRows
-                     WHERE RowNum > {offset} AND RowNum <= {offset + pageSize}";
+                     WHERE STT > {offset} AND STT <= {offset + pageSize}";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -81,14 +90,11 @@ namespace DongThucVat
                         DataTable dtGRV = new DataTable();
                         daGRV.Fill(dtGRV);
 
-                        totalRows = dtGRV.Rows.Count; // Cập nhật tổng số hàng
-
-                        // Tính toán số trang
-                        totalPages = (int)Math.Ceiling((double)totalRows / pageSize);
-
                         await Task.Delay(500);
                         dgv.DataSource = dtGRV;
                         dgv.Refresh();
+                        this.totalPages = totalPages;
+                        UpdateNavigationButtons();
                     }
                 }
             }
@@ -208,26 +214,27 @@ namespace DongThucVat
             }
         }
 
-        private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            SetRowNumber(dgv);
-        }
+        //private void dgv_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        //{
+        //    SetRowNumber(dgv);
+        //}
 
-        private void SetRowNumber(DataGridView dataGridView)
-        {
-            foreach (DataGridViewRow row in dataGridView.Rows)
-            {
-                row.Cells["STT"].Value = row.Index + 1;
-            }
-        }
+        //private void SetRowNumber(DataGridView dataGridView)
+        //{
+        //    foreach (DataGridViewRow row in dataGridView.Rows)
+        //    {
+        //        row.Cells["STT"].Value = row.Index + 1;
+        //    }
+        //}
 
         private void UpdateNavigationButtons()
         {
             // Kiểm tra nếu đang ở trang đầu thì tắt nút Previous
-            btPrev.Enabled = currentPage > 1;
-
+            if (currentPage > 1)
+                btPrev.Enabled = true;
             // Kiểm tra nếu đang ở trang cuối thì tắt nút Next
-            btNext.Enabled = currentPage < totalPages;
+            if (currentPage < totalPages)
+                btNext.Enabled = true;
         }
 
         private void btNext_Click(object sender, EventArgs e)
@@ -266,7 +273,7 @@ namespace DongThucVat
             }
 
             // Cập nhật kích thước trang khi chọn họ mới
-            pageSize = 250; // Đặt kích thước trang mặc định, bạn có thể điều chỉnh theo mong muốn
+            pageSize = 300; // Đặt kích thước trang mặc định, bạn có thể điều chỉnh theo mong muốn
             dgvLoad();
             vitri = null;
             UpdateNavigationButtons(); // Cập nhật trạng thái của nút sau khi chuyển họ

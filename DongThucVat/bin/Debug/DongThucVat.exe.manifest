@@ -67,14 +67,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DongThucVat.exe" size="1052632">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DongThucVat.exe" size="1058264">
       <assemblyIdentity name="DongThucVat" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Pw45UkF0AvUoXX132km6YyOPjJZbD59MQuvHLzIzZLs=</dsig:DigestValue>
+        <dsig:DigestValue>70+o0Q8sFVLjOhpEP3alnFjfoNdPOIvV5B9RAacaGTg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

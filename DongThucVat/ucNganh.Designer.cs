@@ -35,6 +35,8 @@ namespace DongThucVat
             this.btSua = new System.Windows.Forms.Button();
             this.btThem = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lbTieuDe = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btRefresh = new System.Windows.Forms.Button();
             this.btXoa = new System.Windows.Forms.Button();
@@ -50,12 +52,10 @@ namespace DongThucVat
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.lbTieuDe = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtSearch
@@ -63,7 +63,7 @@ namespace DongThucVat
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Location = new System.Drawing.Point(688, 69);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(400, 33);
+            this.txtSearch.Size = new System.Drawing.Size(400, 39);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -117,6 +117,28 @@ namespace DongThucVat
             this.panel5.Size = new System.Drawing.Size(1107, 121);
             this.panel5.TabIndex = 11;
             // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.lbTieuDe);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1107, 45);
+            this.panel2.TabIndex = 15;
+            // 
+            // lbTieuDe
+            // 
+            this.lbTieuDe.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbTieuDe.AutoSize = true;
+            this.lbTieuDe.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTieuDe.ForeColor = System.Drawing.Color.White;
+            this.lbTieuDe.Location = new System.Drawing.Point(433, 4);
+            this.lbTieuDe.Name = "lbTieuDe";
+            this.lbTieuDe.Size = new System.Drawing.Size(296, 41);
+            this.lbTieuDe.TabIndex = 15;
+            this.lbTieuDe.Text = "NGÀNH ĐỘNG VẬT";
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -125,7 +147,7 @@ namespace DongThucVat
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
             this.label1.Location = new System.Drawing.Point(645, 72);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 25);
+            this.label1.Size = new System.Drawing.Size(50, 32);
             this.label1.TabIndex = 13;
             this.label1.Text = "     ";
             // 
@@ -197,6 +219,7 @@ namespace DongThucVat
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
             this.dgv.RowHeadersWidth = 51;
+            this.dgv.RowTemplate.Height = 30;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(1107, 497);
             this.dgv.TabIndex = 0;
@@ -206,6 +229,7 @@ namespace DongThucVat
             // STT
             // 
             this.STT.HeaderText = "STT";
+            this.STT.MinimumWidth = 6;
             this.STT.Name = "STT";
             this.STT.ReadOnly = true;
             this.STT.Width = 40;
@@ -214,6 +238,7 @@ namespace DongThucVat
             // 
             this.Column1.DataPropertyName = "name";
             this.Column1.HeaderText = "Tên tiếng Việt";
+            this.Column1.MinimumWidth = 6;
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
             this.Column1.Width = 300;
@@ -222,6 +247,7 @@ namespace DongThucVat
             // 
             this.Column2.DataPropertyName = "name_latinh";
             this.Column2.HeaderText = "Tên Latinh";
+            this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
             this.Column2.Width = 300;
@@ -230,6 +256,7 @@ namespace DongThucVat
             // 
             this.Column3.DataPropertyName = "status";
             this.Column3.HeaderText = "Trạng thái";
+            this.Column3.MinimumWidth = 6;
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
             this.Column3.Visible = false;
@@ -239,6 +266,7 @@ namespace DongThucVat
             // 
             this.Column7.DataPropertyName = "created_at";
             this.Column7.HeaderText = "Khởi tạo";
+            this.Column7.MinimumWidth = 6;
             this.Column7.Name = "Column7";
             this.Column7.ReadOnly = true;
             this.Column7.Width = 250;
@@ -247,6 +275,7 @@ namespace DongThucVat
             // 
             this.Column4.DataPropertyName = "updated_at";
             this.Column4.HeaderText = "Cập nhật";
+            this.Column4.MinimumWidth = 6;
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
             this.Column4.Width = 250;
@@ -255,55 +284,41 @@ namespace DongThucVat
             // 
             this.Column5.DataPropertyName = "id";
             this.Column5.HeaderText = "";
+            this.Column5.MinimumWidth = 6;
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
             this.Column5.Visible = false;
+            this.Column5.Width = 125;
             // 
             // Column6
             // 
             this.Column6.DataPropertyName = "loai";
             this.Column6.HeaderText = "";
+            this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
             this.Column6.Visible = false;
+            this.Column6.Width = 125;
             // 
             // Column8
             // 
             this.Column8.DataPropertyName = "created_by";
             this.Column8.HeaderText = "";
+            this.Column8.MinimumWidth = 6;
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             this.Column8.Visible = false;
+            this.Column8.Width = 125;
             // 
             // Column9
             // 
             this.Column9.DataPropertyName = "updated_by";
             this.Column9.HeaderText = "";
+            this.Column9.MinimumWidth = 6;
             this.Column9.Name = "Column9";
             this.Column9.ReadOnly = true;
             this.Column9.Visible = false;
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.lbTieuDe);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1107, 45);
-            this.panel2.TabIndex = 15;
-            // 
-            // lbTieuDe
-            // 
-            this.lbTieuDe.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbTieuDe.AutoSize = true;
-            this.lbTieuDe.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTieuDe.ForeColor = System.Drawing.Color.White;
-            this.lbTieuDe.Location = new System.Drawing.Point(433, 4);
-            this.lbTieuDe.Name = "lbTieuDe";
-            this.lbTieuDe.Size = new System.Drawing.Size(238, 32);
-            this.lbTieuDe.TabIndex = 15;
-            this.lbTieuDe.Text = "NGÀNH ĐỘNG VẬT";
+            this.Column9.Width = 125;
             // 
             // ucNganh
             // 
@@ -318,10 +333,10 @@ namespace DongThucVat
             this.Load += new System.EventHandler(this.ucNganh_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
 
         }

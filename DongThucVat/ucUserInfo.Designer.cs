@@ -55,7 +55,7 @@ namespace DongThucVat
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(554, 254);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(103, 25);
+            this.label10.Size = new System.Drawing.Size(129, 32);
             this.label10.TabIndex = 32;
             this.label10.Text = "Ngày sinh:";
             // 
@@ -68,7 +68,7 @@ namespace DongThucVat
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgaySinh.Location = new System.Drawing.Point(663, 256);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(244, 22);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(244, 26);
             this.dtpNgaySinh.TabIndex = 21;
             this.dtpNgaySinh.Value = new System.DateTime(2023, 12, 3, 19, 16, 41, 0);
             // 
@@ -77,7 +77,7 @@ namespace DongThucVat
             this.txtDiaChi.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDiaChi.Location = new System.Drawing.Point(663, 328);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(419, 33);
+            this.txtDiaChi.Size = new System.Drawing.Size(419, 39);
             this.txtDiaChi.TabIndex = 22;
             // 
             // label5
@@ -87,7 +87,7 @@ namespace DongThucVat
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(581, 331);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 25);
+            this.label5.Size = new System.Drawing.Size(95, 32);
             this.label5.TabIndex = 33;
             this.label5.Text = "Địa chỉ:";
             // 
@@ -105,6 +105,7 @@ namespace DongThucVat
             this.btDoiMatKhau.TabIndex = 25;
             this.btDoiMatKhau.Text = "Đổi mật khẩu";
             this.btDoiMatKhau.UseVisualStyleBackColor = false;
+            this.btDoiMatKhau.Click += new System.EventHandler(this.btDoiMatKhau_Click_1);
             // 
             // cbGioiTinh
             // 
@@ -118,7 +119,7 @@ namespace DongThucVat
             "Khác"});
             this.cbGioiTinh.Location = new System.Drawing.Point(663, 174);
             this.cbGioiTinh.Name = "cbGioiTinh";
-            this.cbGioiTinh.Size = new System.Drawing.Size(244, 33);
+            this.cbGioiTinh.Size = new System.Drawing.Size(244, 40);
             this.cbGioiTinh.TabIndex = 20;
             // 
             // btHuy
@@ -129,12 +130,13 @@ namespace DongThucVat
             this.btHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btHuy.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btHuy.ForeColor = System.Drawing.Color.White;
-            this.btHuy.Location = new System.Drawing.Point(342, 491);
+            this.btHuy.Location = new System.Drawing.Point(342, 435);
             this.btHuy.Name = "btHuy";
             this.btHuy.Size = new System.Drawing.Size(174, 38);
             this.btHuy.TabIndex = 23;
             this.btHuy.Text = "Hủy";
             this.btHuy.UseVisualStyleBackColor = false;
+            this.btHuy.Click += new System.EventHandler(this.btHuy_Click_1);
             // 
             // btLuu
             // 
@@ -144,12 +146,13 @@ namespace DongThucVat
             this.btLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btLuu.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLuu.ForeColor = System.Drawing.Color.White;
-            this.btLuu.Location = new System.Drawing.Point(600, 491);
+            this.btLuu.Location = new System.Drawing.Point(600, 435);
             this.btLuu.Name = "btLuu";
             this.btLuu.Size = new System.Drawing.Size(174, 38);
             this.btLuu.TabIndex = 24;
             this.btLuu.Text = "Lưu";
             this.btLuu.UseVisualStyleBackColor = false;
+            this.btLuu.Click += new System.EventHandler(this.btLuu_Click_1);
             // 
             // btSuaThongTin
             // 
@@ -165,13 +168,14 @@ namespace DongThucVat
             this.btSuaThongTin.TabIndex = 26;
             this.btSuaThongTin.Text = "Cập nhật thông tin";
             this.btSuaThongTin.UseVisualStyleBackColor = false;
+            this.btSuaThongTin.Click += new System.EventHandler(this.btSuaThongTin_Click);
             // 
             // txtHoTen
             // 
             this.txtHoTen.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtHoTen.Location = new System.Drawing.Point(105, 174);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(417, 33);
+            this.txtHoTen.Size = new System.Drawing.Size(417, 39);
             this.txtHoTen.TabIndex = 17;
             // 
             // txtSDT
@@ -179,7 +183,7 @@ namespace DongThucVat
             this.txtSDT.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSDT.Location = new System.Drawing.Point(105, 328);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(417, 33);
+            this.txtSDT.Size = new System.Drawing.Size(417, 39);
             this.txtSDT.TabIndex = 19;
             // 
             // txtEmail
@@ -187,7 +191,7 @@ namespace DongThucVat
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtEmail.Location = new System.Drawing.Point(105, 251);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(417, 33);
+            this.txtEmail.Size = new System.Drawing.Size(417, 39);
             this.txtEmail.TabIndex = 18;
             // 
             // label8
@@ -197,7 +201,7 @@ namespace DongThucVat
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(566, 177);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(91, 25);
+            this.label8.Size = new System.Drawing.Size(115, 32);
             this.label8.TabIndex = 31;
             this.label8.Text = "Giới tính:";
             // 
@@ -208,7 +212,7 @@ namespace DongThucVat
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(48, 331);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 25);
+            this.label6.Size = new System.Drawing.Size(64, 32);
             this.label6.TabIndex = 30;
             this.label6.Text = "SĐT:";
             // 
@@ -219,7 +223,7 @@ namespace DongThucVat
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(35, 254);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 25);
+            this.label4.Size = new System.Drawing.Size(79, 32);
             this.label4.TabIndex = 29;
             this.label4.Text = "Email:";
             // 
@@ -228,11 +232,11 @@ namespace DongThucVat
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(451, 82);
+            this.label2.Location = new System.Drawing.Point(361, 82);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(215, 32);
+            this.label2.Size = new System.Drawing.Size(394, 41);
             this.label2.TabIndex = 27;
-            this.label2.Text = "THÔNG TIN USER";
+            this.label2.Text = "THÔNG TIN NGƯỜI DÙNG";
             // 
             // label1
             // 
@@ -241,20 +245,20 @@ namespace DongThucVat
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(24, 177);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 25);
+            this.label1.Size = new System.Drawing.Size(96, 32);
             this.label1.TabIndex = 28;
             this.label1.Text = "Họ tên:";
             // 
             // ucUserInfo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.Controls.Add(this.btHuy);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.dtpNgaySinh);
             this.Controls.Add(this.txtDiaChi);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btDoiMatKhau);
             this.Controls.Add(this.cbGioiTinh);
-            this.Controls.Add(this.btHuy);
             this.Controls.Add(this.btLuu);
             this.Controls.Add(this.btSuaThongTin);
             this.Controls.Add(this.txtHoTen);

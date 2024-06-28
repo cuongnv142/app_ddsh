@@ -76,13 +76,13 @@ namespace DongThucVat
             txtTenTiengViet.Text = tenTiengViet;
             txtTenLatinh.Text = tenLatinh;
             cb.SelectedValue = idFK;
-            if (status != null)
-            {
-                if (Boolean.Parse(status) == true)
-                    rbtOn.Checked = true;
-                if (Boolean.Parse(status) == false)
-                    rbtOff.Checked = true;
-            }
+            //if (status != null)
+            //{
+            //    if (Boolean.Parse(status) == true)
+            //        rbtOn.Checked = true;
+            //    if (Boolean.Parse(status) == false)
+            //        rbtOff.Checked = true;
+            //}
         }
 
         public void cbLoad()
@@ -113,8 +113,8 @@ namespace DongThucVat
         {
             txtTenTiengViet.Text = "";
             txtTenLatinh.Text = "";
-            rbtOn.Checked = false;
-            rbtOff.Checked = true;
+            //rbtOn.Checked = false;
+            //rbtOff.Checked = true;
             cbLoad();
         }
 
@@ -154,7 +154,7 @@ namespace DongThucVat
                 cmd.Parameters.Add("@name_latinh", SqlDbType.NVarChar).Value = txtTenLatinh.Text.Trim();
                 cmd.Parameters.Add("@loai", SqlDbType.Bit).Value = loai;
                 cmd.Parameters.Add("@id_dtv_nganh", SqlDbType.Int).Value = cb.SelectedValue;
-                cmd.Parameters.Add("@status", SqlDbType.Bit).Value = rbtOn.Checked ? 1 : 0;
+                cmd.Parameters.Add("@status", SqlDbType.Bit).Value = 1;
                 cmd.Parameters.Add("@created_at", SqlDbType.DateTime).Value = createdAt;
                 cmd.Parameters.Add("@created_by", SqlDbType.Int).Value = Int32.Parse(idUser);
 
@@ -174,7 +174,7 @@ namespace DongThucVat
                 cmd.Parameters.Add("@name", SqlDbType.NVarChar).Value = txtTenTiengViet.Text.Trim();
                 cmd.Parameters.Add("@name_latinh", SqlDbType.NVarChar).Value = txtTenLatinh.Text.Trim();
                 cmd.Parameters.Add("@id_dtv_nganh", SqlDbType.Int).Value = Int32.Parse(cb.SelectedValue.ToString());
-                cmd.Parameters.Add("@status", SqlDbType.Bit).Value = rbtOn.Checked ? 1 : 0;
+                cmd.Parameters.Add("@status", SqlDbType.Bit).Value = 1;
                 cmd.Parameters.Add("@updated_at", SqlDbType.DateTime).Value = updatedAt;
                 cmd.Parameters.Add("@updated_by", SqlDbType.Int).Value = Int32.Parse(idUser);
 

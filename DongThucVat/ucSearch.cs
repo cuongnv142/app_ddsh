@@ -102,7 +102,7 @@ namespace DongThucVat
                         listItem[i - startIndex].Nganh = kq.Nganh;
 
                         // Gán sự kiện Click cho mỗi ucListItem
-                        listItem[i - startIndex].ItemClick += ucListItem_Click;
+                        listItem[i - startIndex].DoubleClick += ucListItem_DoubleClick;
 
                         // Thêm listItem[i] vào fpnlKetQua.Controls
                         fpnlKetQua.Controls.Add(listItem[i - startIndex]);
@@ -111,7 +111,7 @@ namespace DongThucVat
             }
         }
 
-        private void ucListItem_Click(object sender, EventArgs e)
+        private void ucListItem_DoubleClick(object sender, EventArgs e)
         {
             try
             {
@@ -133,6 +133,29 @@ namespace DongThucVat
                 MessageBox.Show("Lỗi: " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //private void ucListItem_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        using (frmHienThi frm = new frmHienThi())
+        //        {
+        //            // Xác định ucListItem được click
+        //            ucListItem clickedItem = sender as ucListItem;
+        //            if (clickedItem != null)
+        //            {
+        //                // Lấy số thứ tự của ucListItem
+        //                string itemID = clickedItem.Id;
+        //                frm.IdHienThi = itemID;
+        //                frm.ShowDialog();
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ev)
+        //    {
+        //        MessageBox.Show("Lỗi: " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         private async Task<string> LoadLatestImageAsync(string idloai)
         {
@@ -261,29 +284,6 @@ namespace DongThucVat
             await LoadComboBoxAsync(cbHo, "Họ", cbBo.SelectedIndex > 0 ?
                 "SELECT id, name FROM Ho WHERE loai = " + loai + " AND id_dtv_bo = " + Int32.Parse(cbBo.SelectedValue.ToString()) :
                 "SELECT id, name FROM Ho WHERE loai = " + loai);
-        }
-
-        private void dgv_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            try
-            {
-                if (dgv.Rows.Count > 0)
-                {
-                    if (e.RowIndex >= 0)
-                    {
-                        using (frmHienThi frm = new frmHienThi())
-                        {
-                           DataGridViewRow row = dgv.Rows[e.RowIndex];
-                            frm.IdHienThi = row.Cells[1].Value.ToString();
-                            frm.ShowDialog();
-                        }
-                    }
-                }
-            }
-            catch (Exception ev)
-            {
-                MessageBox.Show("Lỗi: " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private async Task LoadDataGridAsync()
@@ -440,6 +440,29 @@ namespace DongThucVat
             fpnlKetQua.Controls.Clear();
             currentPage = 1;
             LoadDataGridAsync();
+        }
+
+        private void dgv_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            try
+            {
+                if (dgv.Rows.Count > 0)
+                {
+                    if (e.RowIndex >= 0)
+                    {
+                        using (frmHienThi frm = new frmHienThi())
+                        {
+                            DataGridViewRow row = dgv.Rows[e.RowIndex];
+                            frm.IdHienThi = row.Cells[1].Value.ToString();
+                            frm.ShowDialog();
+                        }
+                    }
+                }
+            }
+            catch (Exception ev)
+            {
+                MessageBox.Show("Lỗi: " + ev.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

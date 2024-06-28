@@ -47,7 +47,7 @@ namespace DongThucVat
             txtSDT.ReadOnly = b;
             txtPassword.ReadOnly = b;
             txtDiaChi.ReadOnly = b;
-            rbtAdmin.Enabled = !b;
+            rbtQL.Enabled = !b;
             rbtNV.Enabled = !b;
             rbtOn.Enabled = !b;
             rbtOff.Enabled = !b;
@@ -69,7 +69,7 @@ namespace DongThucVat
             txtSDT.Text = "";
             txtPassword.Text = "";
             txtDiaChi.Text = "";
-            rbtAdmin.Checked = false;
+            rbtQL.Checked = false;
             rbtNV.Checked = true;
             rbtOn.Checked = false;
             rbtOff.Checked = true;
@@ -153,7 +153,7 @@ namespace DongThucVat
                 cmd.Parameters.Add("@Gender", SqlDbType.NVarChar).Value = cbGioiTinh.SelectedIndex == 0 ? "" : cbGioiTinh.SelectedItem.ToString();
                 cmd.Parameters.Add("@Dob", SqlDbType.Date).Value = DateTime.Parse(dtpNgaySinh.Value.ToString("yyyy/MM/dd"));
                 cmd.Parameters.Add("@CreatedAt", SqlDbType.DateTime).Value = createdAt;
-                cmd.Parameters.Add("@IsAdmin", SqlDbType.Bit).Value = rbtAdmin.Checked ? 1 : 0;
+                cmd.Parameters.Add("@IsAdmin", SqlDbType.TinyInt).Value = rbtQL.Checked ? 2 : 3;
                 cmd.Parameters.Add("@Status", SqlDbType.Bit).Value = rbtOn.Checked ? 1 : 0;
 
 
@@ -174,7 +174,7 @@ namespace DongThucVat
                 cmd.Parameters.Add("@Gender", SqlDbType.NVarChar).Value = cbGioiTinh.SelectedIndex == 0 ? "" : cbGioiTinh.SelectedItem.ToString();
                 cmd.Parameters.Add("@Dob", SqlDbType.Date).Value = DateTime.Parse(dtpNgaySinh.Value.ToString("yyyy/MM/dd"));
                 cmd.Parameters.Add("@UpdatedAt", SqlDbType.DateTime).Value = updatedAt;
-                cmd.Parameters.Add("@IsAdmin", SqlDbType.Bit).Value = rbtAdmin.Checked ? 1 : 0;
+                cmd.Parameters.Add("@IsAdmin", SqlDbType.TinyInt).Value = rbtQL.Checked ? 2 : 3;
                 cmd.Parameters.Add("@Status", SqlDbType.Bit).Value = rbtOn.Checked ? 1 : 0;
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -273,9 +273,9 @@ namespace DongThucVat
                         txtSDT.Text = row.Cells[5].Value.ToString();
                         cbGioiTinh.SelectedItem = row.Cells[6].Value.ToString();
                         dtpNgaySinh.Value = DateTime.Parse(row.Cells[7].Value.ToString());
-                        if (Boolean.Parse(row.Cells[11].Value.ToString()) == true)
-                            rbtAdmin.Checked = true;
-                        if (Boolean.Parse(row.Cells[11].Value.ToString()) == false)
+                        if (Int16.Parse(row.Cells[11].Value.ToString()) == 2)
+                            rbtQL.Checked = true;
+                        if (Int16.Parse(row.Cells[11].Value.ToString()) == 3)
                             rbtNV.Checked = true;
                         if (Boolean.Parse(row.Cells[12].Value.ToString()) == true)
                             rbtOn.Checked = true;

@@ -283,9 +283,12 @@ namespace DongThucVat
         {
             if (conn.State != ConnectionState.Open)
                 conn.Open();
-            sql = "SELECT Loai.name AS Ten, Loai.name_latinh AS TenLatinh, " +
-                      "CASE WHEN Loai.loai = 0 THEN N'Động vật' ELSE N'Thực vật' END AS Loai, " +
-                      "Ho.name AS Ho, Bo.name AS Bo, Lop.name AS Lop, Nganh.name AS Nganh " +
+            sql = "SELECT CASE WHEN Loai.loai = 0 THEN N'Động vật' ELSE N'Thực vật' END AS Loai, " +
+                      "Loai.name AS Ten, Loai.name_latinh AS TenLatinh, " +
+                      "Loai.muc_do_bao_ton_iucn AS IUCN, Loai.muc_do_bao_ton_sdvn AS SDVN, Loai.muc_do_bao_ton_ndcp AS ND84, Loai.muc_do_bao_ton_nd64cp AS NDCP, " +
+                      "Ho.name AS TenHo, Ho.name_latinh AS TenLatinhHo, Bo.name AS TenBo, Bo.name_latinh AS TenLatinhBo, " +
+                      "Lop.name AS TenLop, Lop.name_latinh AS TenLatinhLop, Nganh.name AS Nganh, Nganh.name_latinh AS TenLatinhNganh, " +
+                      "Loai.created_at AS KhoiTao " +                      
                       "FROM Loai " +
                       "JOIN Ho ON Loai.id_dtv_ho = Ho.id " +
                       "JOIN Bo ON Ho.id_dtv_bo = Bo.id " +
@@ -325,7 +328,7 @@ namespace DongThucVat
 
                             // Thêm header mới
                             Row headerRow = new Row();
-                            string[] headerColumns = { "Tên tiếng Việt", "Tên Latinh", "Loài", "Họ", "Bộ", "Lớp", "Ngành" };
+                            string[] headerColumns = { "STT", "Giới", "Tên tiếng Việt", "Tên Latinh", "IUCN", "Sách đỏ VN", "Nghị định 84", "Nghị định chính phủ", "Họ tiếng Việt", "Họ Latinh", "Bộ tiếng Việt", "Bộ Latinh", "Lớp tiếng Việt", "Lớp Latinh", "Ngành tiếng Việt", "Ngành Latinh", "Thời gian khởi tạo" };
                             foreach (var headerColumn in headerColumns)
                             {
                                 Cell headerCell = new Cell(new InlineString(new Text(headerColumn)))
@@ -337,9 +340,19 @@ namespace DongThucVat
                             sheetData.AppendChild(headerRow);
 
                             // Đọc dữ liệu từ CSDL và thêm vào tệp Excel
+                            int stt = 1;
                             while (reader.Read())
                             {
                                 Row row = new Row();
+
+                                // Thêm cột STT
+                                Cell sttCell = new Cell(new CellValue(stt.ToString()))
+                                {
+                                    DataType = CellValues.Number
+                                };
+                                row.AppendChild(sttCell);
+
+                                // Thêm các cột dữ liệu
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
                                     Cell cell;
@@ -360,6 +373,7 @@ namespace DongThucVat
                                     row.AppendChild(cell);
                                 }
                                 sheetData.AppendChild(row);
+                                stt++;
                             }
                         }
 
@@ -387,15 +401,17 @@ namespace DongThucVat
         {
             if (conn.State != ConnectionState.Open)
                 conn.Open();
-            sql = "SELECT Loai.name AS Ten, Loai.name_latinh AS TenLatinh, " +
-              "N'Động vật' AS Loai, " + // Loại là 'Động vật'
-              "Ho.name AS Ho, Bo.name AS Bo, Lop.name AS Lop, Nganh.name AS Nganh " +
-              "FROM Loai " +
-              "JOIN Ho ON Loai.id_dtv_ho = Ho.id " +
-              "JOIN Bo ON Ho.id_dtv_bo = Bo.id " +
-              "JOIN Lop ON Bo.id_dtv_lop = Lop.id " +
-              "JOIN Nganh ON Lop.id_dtv_nganh = Nganh.id " +
-              "WHERE Loai.loai = 0"; // Chỉ lấy động vật (Loai.loai = 0)
+            sql = "SELECT N'Động vật' AS Loai, Loai.name AS Ten, Loai.name_latinh AS TenLatinh, " +
+                  "Loai.muc_do_bao_ton_iucn AS IUCN, Loai.muc_do_bao_ton_sdvn AS SDVN, Loai.muc_do_bao_ton_ndcp AS ND84, Loai.muc_do_bao_ton_nd64cp AS NDCP, " +
+                  "Ho.name AS TenHo, Ho.name_latinh AS TenLatinhHo, Bo.name AS TenBo, Bo.name_latinh AS TenLatinhBo, " +
+                  "Lop.name AS TenLop, Lop.name_latinh AS TenLatinhLop, Nganh.name AS Nganh, Nganh.name_latinh AS TenLatinhNganh, " +
+                  "Loai.created_at AS KhoiTao " +
+                  "FROM Loai " +
+                  "JOIN Ho ON Loai.id_dtv_ho = Ho.id " +
+                  "JOIN Bo ON Ho.id_dtv_bo = Bo.id " +
+                  "JOIN Lop ON Bo.id_dtv_lop = Lop.id " +
+                  "JOIN Nganh ON Lop.id_dtv_nganh = Nganh.id " +
+                  "WHERE Loai.loai = 0"; // Chỉ lấy động vật
 
             using (SqlCommand command = new SqlCommand(sql, conn))
             {
@@ -430,7 +446,7 @@ namespace DongThucVat
 
                             // Thêm header mới
                             Row headerRow = new Row();
-                            string[] headerColumns = { "Tên tiếng Việt", "Tên Latinh", "Loài", "Họ", "Bộ", "Lớp", "Ngành" };
+                            string[] headerColumns = { "STT", "Giới", "Tên tiếng Việt", "Tên Latinh", "IUCN", "Sách đỏ VN", "Nghị định 84", "Nghị định chính phủ", "Họ tiếng Việt", "Họ Latinh", "Bộ tiếng Việt", "Bộ Latinh", "Lớp tiếng Việt", "Lớp Latinh", "Ngành tiếng Việt", "Ngành Latinh", "Thời gian khởi tạo" };
                             foreach (var headerColumn in headerColumns)
                             {
                                 Cell headerCell = new Cell(new InlineString(new Text(headerColumn)))
@@ -442,9 +458,19 @@ namespace DongThucVat
                             sheetData.AppendChild(headerRow);
 
                             // Đọc dữ liệu từ CSDL và thêm vào tệp Excel
+                            int stt = 1;
                             while (reader.Read())
                             {
                                 Row row = new Row();
+
+                                // Thêm cột STT
+                                Cell sttCell = new Cell(new CellValue(stt.ToString()))
+                                {
+                                    DataType = CellValues.Number
+                                };
+                                row.AppendChild(sttCell);
+
+                                // Thêm các cột dữ liệu
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
                                     Cell cell;
@@ -465,6 +491,7 @@ namespace DongThucVat
                                     row.AppendChild(cell);
                                 }
                                 sheetData.AppendChild(row);
+                                stt++;
                             }
                         }
 
@@ -478,15 +505,17 @@ namespace DongThucVat
         {
             if (conn.State != ConnectionState.Open)
                 conn.Open();
-            sql = "SELECT Loai.name AS Ten, Loai.name_latinh AS TenLatinh, " +
-              "N'Thực vật' AS Loai, " +
-              "Ho.name AS Ho, Bo.name AS Bo, Lop.name AS Lop, Nganh.name AS Nganh " +
-              "FROM Loai " +
-              "JOIN Ho ON Loai.id_dtv_ho = Ho.id " +
-              "JOIN Bo ON Ho.id_dtv_bo = Bo.id " +
-              "JOIN Lop ON Bo.id_dtv_lop = Lop.id " +
-              "JOIN Nganh ON Lop.id_dtv_nganh = Nganh.id " +
-              "WHERE Loai.loai = 1"; // Chỉ lấy thực vật
+            sql = "SELECT N'Thực vật' AS Loai, Loai.name AS Ten, Loai.name_latinh AS TenLatinh, " +
+                  "Loai.muc_do_bao_ton_iucn AS IUCN, Loai.muc_do_bao_ton_sdvn AS SDVN, Loai.muc_do_bao_ton_ndcp AS ND84, Loai.muc_do_bao_ton_nd64cp AS NDCP, " +
+                  "Ho.name AS TenHo, Ho.name_latinh AS TenLatinhHo, Bo.name AS TenBo, Bo.name_latinh AS TenLatinhBo, " +
+                  "Lop.name AS TenLop, Lop.name_latinh AS TenLatinhLop, Nganh.name AS Nganh, Nganh.name_latinh AS TenLatinhNganh, " +
+                  "Loai.created_at AS KhoiTao " +
+                  "FROM Loai " +
+                  "JOIN Ho ON Loai.id_dtv_ho = Ho.id " +
+                  "JOIN Bo ON Ho.id_dtv_bo = Bo.id " +
+                  "JOIN Lop ON Bo.id_dtv_lop = Lop.id " +
+                  "JOIN Nganh ON Lop.id_dtv_nganh = Nganh.id " +
+                  "WHERE Loai.loai = 1"; // Chỉ lấy thực vật
 
             using (SqlCommand command = new SqlCommand(sql, conn))
             {
@@ -521,7 +550,7 @@ namespace DongThucVat
 
                             // Thêm header mới
                             Row headerRow = new Row();
-                            string[] headerColumns = { "Tên tiếng Việt", "Tên Latinh", "Loài", "Họ", "Bộ", "Lớp", "Ngành" };
+                            string[] headerColumns = { "STT", "Giới", "Tên tiếng Việt", "Tên Latinh", "IUCN", "Sách đỏ VN", "Nghị định 84", "Nghị định chính phủ", "Họ tiếng Việt", "Họ Latinh", "Bộ tiếng Việt", "Bộ Latinh", "Lớp tiếng Việt", "Lớp Latinh", "Ngành tiếng Việt", "Ngành Latinh", "Thời gian khởi tạo" };
                             foreach (var headerColumn in headerColumns)
                             {
                                 Cell headerCell = new Cell(new InlineString(new Text(headerColumn)))
@@ -533,9 +562,19 @@ namespace DongThucVat
                             sheetData.AppendChild(headerRow);
 
                             // Đọc dữ liệu từ CSDL và thêm vào tệp Excel
+                            int stt = 1;
                             while (reader.Read())
                             {
                                 Row row = new Row();
+
+                                // Thêm cột STT
+                                Cell sttCell = new Cell(new CellValue(stt.ToString()))
+                                {
+                                    DataType = CellValues.Number
+                                };
+                                row.AppendChild(sttCell);
+
+                                // Thêm các cột dữ liệu
                                 for (int i = 0; i < reader.FieldCount; i++)
                                 {
                                     Cell cell;
@@ -556,6 +595,7 @@ namespace DongThucVat
                                     row.AppendChild(cell);
                                 }
                                 sheetData.AppendChild(row);
+                                stt++;
                             }
                         }
 
@@ -564,6 +604,96 @@ namespace DongThucVat
                 }
             }
         }
+        //private void btExportChiTietThucVat_Click(object sender, EventArgs e)
+        //{
+        //    if (conn.State != ConnectionState.Open)
+        //        conn.Open();
+        //    sql = "SELECT Loai.name AS Ten, Loai.name_latinh AS TenLatinh, " +
+        //      "N'Thực vật' AS Loai, " +
+        //      "Ho.name AS Ho, Bo.name AS Bo, Lop.name AS Lop, Nganh.name AS Nganh " +
+        //      "FROM Loai " +
+        //      "JOIN Ho ON Loai.id_dtv_ho = Ho.id " +
+        //      "JOIN Bo ON Ho.id_dtv_bo = Bo.id " +
+        //      "JOIN Lop ON Bo.id_dtv_lop = Lop.id " +
+        //      "JOIN Nganh ON Lop.id_dtv_nganh = Nganh.id " +
+        //      "WHERE Loai.loai = 1"; // Chỉ lấy thực vật
+
+        //    using (SqlCommand command = new SqlCommand(sql, conn))
+        //    {
+        //        using (SqlDataReader reader = command.ExecuteReader())
+        //        {
+        //            // Hiển thị hộp thoại lưu tệp
+        //            SaveFileDialog saveFileDialog = new SaveFileDialog
+        //            {
+        //                Filter = "Excel Files|*.xlsx|All Files|*.*",
+        //                FileName = "ThongKeChiTietThucVat.xlsx",
+        //                Title = "Choose a location to save the Excel file"
+        //            };
+
+        //            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+        //            {
+        //                string outputPath = saveFileDialog.FileName;
+
+        //                // Tạo một tệp Excel mới
+        //                using (SpreadsheetDocument spreadsheetDocument = SpreadsheetDocument.Create(outputPath, SpreadsheetDocumentType.Workbook))
+        //                {
+        //                    WorkbookPart workbookPart = spreadsheetDocument.AddWorkbookPart();
+        //                    workbookPart.Workbook = new Workbook();
+
+        //                    WorksheetPart worksheetPart = workbookPart.AddNewPart<WorksheetPart>();
+        //                    SheetData sheetData = new SheetData();
+        //                    worksheetPart.Worksheet = new Worksheet(sheetData);
+
+        //                    Sheets sheets = spreadsheetDocument.WorkbookPart.Workbook.AppendChild(new Sheets());
+
+        //                    Sheet sheet = new Sheet() { Id = spreadsheetDocument.WorkbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = "Sheet 1" };
+        //                    sheets.Append(sheet);
+
+        //                    // Thêm header mới
+        //                    Row headerRow = new Row();
+        //                    string[] headerColumns = { "Tên tiếng Việt", "Tên Latinh", "Loài", "Họ", "Bộ", "Lớp", "Ngành" };
+        //                    foreach (var headerColumn in headerColumns)
+        //                    {
+        //                        Cell headerCell = new Cell(new InlineString(new Text(headerColumn)))
+        //                        {
+        //                            DataType = CellValues.InlineString
+        //                        };
+        //                        headerRow.AppendChild(headerCell);
+        //                    }
+        //                    sheetData.AppendChild(headerRow);
+
+        //                    // Đọc dữ liệu từ CSDL và thêm vào tệp Excel
+        //                    while (reader.Read())
+        //                    {
+        //                        Row row = new Row();
+        //                        for (int i = 0; i < reader.FieldCount; i++)
+        //                        {
+        //                            Cell cell;
+        //                            if (reader.GetName(i) == "Loai")
+        //                            {
+        //                                cell = new Cell(new InlineString(new Text(reader[i].ToString())))
+        //                                {
+        //                                    DataType = CellValues.InlineString
+        //                                };
+        //                            }
+        //                            else
+        //                            {
+        //                                cell = new Cell(new CellValue(reader[i].ToString()))
+        //                                {
+        //                                    DataType = CellValues.String
+        //                                };
+        //                            }
+        //                            row.AppendChild(cell);
+        //                        }
+        //                        sheetData.AppendChild(row);
+        //                    }
+        //                }
+
+        //                MessageBox.Show($"Xuất dữ liệu thành công. Tệp đã được lưu tại: {outputPath}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            }
+        //        }
+        //    }
+        //}
 
         private void btExportTongQuanThucVat_Click(object sender, EventArgs e)
         {

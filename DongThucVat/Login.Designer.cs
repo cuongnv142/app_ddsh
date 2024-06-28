@@ -140,9 +140,10 @@ namespace DongThucVat
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(123, 342);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(609, 33);
+            this.txtPassword.Size = new System.Drawing.Size(609, 39);
             this.txtPassword.TabIndex = 1;
             this.txtPassword.UseSystemPasswordChar = true;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
             // pbLogo1
             // 
@@ -163,7 +164,7 @@ namespace DongThucVat
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(24)))));
             this.label4.Location = new System.Drawing.Point(129, 314);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 25);
+            this.label4.Size = new System.Drawing.Size(126, 32);
             this.label4.TabIndex = 6;
             this.label4.Text = "Mật khẩu:";
             // 
@@ -175,7 +176,7 @@ namespace DongThucVat
             this.lbQuenMatKhau.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(24)))));
             this.lbQuenMatKhau.Location = new System.Drawing.Point(590, 378);
             this.lbQuenMatKhau.Name = "lbQuenMatKhau";
-            this.lbQuenMatKhau.Size = new System.Drawing.Size(134, 21);
+            this.lbQuenMatKhau.Size = new System.Drawing.Size(166, 28);
             this.lbQuenMatKhau.TabIndex = 2;
             this.lbQuenMatKhau.Text = "Quên mật khẩu?";
             this.lbQuenMatKhau.Click += new System.EventHandler(this.lbQuenMatKhau_Click);
@@ -188,7 +189,7 @@ namespace DongThucVat
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(24)))));
             this.label1.Location = new System.Drawing.Point(129, 250);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 25);
+            this.label1.Size = new System.Drawing.Size(79, 32);
             this.label1.TabIndex = 5;
             this.label1.Text = "Email:";
             // 
@@ -198,8 +199,9 @@ namespace DongThucVat
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(123, 278);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(609, 33);
+            this.txtEmail.Size = new System.Drawing.Size(609, 39);
             this.txtEmail.TabIndex = 0;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // panel4
             // 
@@ -230,7 +232,7 @@ namespace DongThucVat
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(854, 480);

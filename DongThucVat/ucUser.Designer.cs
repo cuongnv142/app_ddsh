@@ -29,14 +29,9 @@ namespace DongThucVat
         /// </summary>
         private void InitializeComponent()
         {
-            this.last_signined_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.created_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.updated_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbGioiTinh = new System.Windows.Forms.ComboBox();
             this.btXoa = new System.Windows.Forms.Button();
             this.btSua = new System.Windows.Forms.Button();
-            this.is_admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.txtHoTen = new System.Windows.Forms.TextBox();
             this.txtSDT = new System.Windows.Forms.TextBox();
@@ -47,64 +42,37 @@ namespace DongThucVat
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbtNV = new System.Windows.Forms.RadioButton();
-            this.rbtAdmin = new System.Windows.Forms.RadioButton();
+            this.rbtQL = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbtOff = new System.Windows.Forms.RadioButton();
             this.rbtOn = new System.Windows.Forms.RadioButton();
             this.label10 = new System.Windows.Forms.Label();
-            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.btThem = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btHuy = new System.Windows.Forms.Button();
+            this.btLuu = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dob = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btHuy = new System.Windows.Forms.Button();
-            this.btLuu = new System.Windows.Forms.Button();
+            this.gender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.is_admin = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.last_signined_time = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.created_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.updated_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
-            // 
-            // last_signined_time
-            // 
-            this.last_signined_time.DataPropertyName = "last_signined_time";
-            this.last_signined_time.HeaderText = "Đăng nhập lần cuối";
-            this.last_signined_time.Name = "last_signined_time";
-            this.last_signined_time.ReadOnly = true;
-            this.last_signined_time.Width = 220;
-            // 
-            // created_at
-            // 
-            this.created_at.DataPropertyName = "created_at";
-            this.created_at.HeaderText = "Khởi tạo";
-            this.created_at.Name = "created_at";
-            this.created_at.ReadOnly = true;
-            this.created_at.Width = 150;
-            // 
-            // updated_at
-            // 
-            this.updated_at.DataPropertyName = "updated_at";
-            this.updated_at.HeaderText = "Cập nhật";
-            this.updated_at.Name = "updated_at";
-            this.updated_at.ReadOnly = true;
-            this.updated_at.Width = 150;
-            // 
-            // status
-            // 
-            this.status.DataPropertyName = "status";
-            this.status.HeaderText = "Trạng thái";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
-            this.status.Width = 125;
             // 
             // cbGioiTinh
             // 
@@ -119,7 +87,7 @@ namespace DongThucVat
             "Khác"});
             this.cbGioiTinh.Location = new System.Drawing.Point(711, 67);
             this.cbGioiTinh.Name = "cbGioiTinh";
-            this.cbGioiTinh.Size = new System.Drawing.Size(237, 29);
+            this.cbGioiTinh.Size = new System.Drawing.Size(237, 36);
             this.cbGioiTinh.TabIndex = 50;
             // 
             // btXoa
@@ -154,20 +122,13 @@ namespace DongThucVat
             this.btSua.UseVisualStyleBackColor = false;
             this.btSua.Click += new System.EventHandler(this.btSua_Click);
             // 
-            // is_admin
-            // 
-            this.is_admin.DataPropertyName = "is_admin";
-            this.is_admin.HeaderText = "Admin";
-            this.is_admin.Name = "is_admin";
-            this.is_admin.ReadOnly = true;
-            // 
             // txtPassword
             // 
             this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(118, 259);
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(459, 29);
+            this.txtPassword.Size = new System.Drawing.Size(459, 34);
             this.txtPassword.TabIndex = 49;
             // 
             // txtHoTen
@@ -176,7 +137,7 @@ namespace DongThucVat
             this.txtHoTen.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHoTen.Location = new System.Drawing.Point(118, 67);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(459, 29);
+            this.txtHoTen.Size = new System.Drawing.Size(459, 34);
             this.txtHoTen.TabIndex = 45;
             // 
             // txtSDT
@@ -185,7 +146,7 @@ namespace DongThucVat
             this.txtSDT.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSDT.Location = new System.Drawing.Point(118, 163);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(459, 29);
+            this.txtSDT.Size = new System.Drawing.Size(459, 34);
             this.txtSDT.TabIndex = 47;
             // 
             // txtEmail
@@ -194,7 +155,7 @@ namespace DongThucVat
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(118, 115);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(459, 29);
+            this.txtEmail.Size = new System.Drawing.Size(459, 34);
             this.txtEmail.TabIndex = 46;
             // 
             // label8
@@ -204,7 +165,7 @@ namespace DongThucVat
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(630, 70);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 21);
+            this.label8.Size = new System.Drawing.Size(95, 28);
             this.label8.TabIndex = 62;
             this.label8.Text = "Giới tính:";
             // 
@@ -215,7 +176,7 @@ namespace DongThucVat
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(69, 169);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 21);
+            this.label6.Size = new System.Drawing.Size(53, 28);
             this.label6.TabIndex = 59;
             this.label6.Text = "SĐT:";
             // 
@@ -226,7 +187,7 @@ namespace DongThucVat
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(31, 262);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 21);
+            this.label3.Size = new System.Drawing.Size(103, 28);
             this.label3.TabIndex = 61;
             this.label3.Text = "Mật khẩu:";
             // 
@@ -237,7 +198,7 @@ namespace DongThucVat
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(60, 118);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 21);
+            this.label4.Size = new System.Drawing.Size(65, 28);
             this.label4.TabIndex = 58;
             this.label4.Text = "Email:";
             // 
@@ -248,7 +209,7 @@ namespace DongThucVat
             this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(415, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(286, 32);
+            this.label2.Size = new System.Drawing.Size(355, 41);
             this.label2.TabIndex = 56;
             this.label2.Text = "QUẢN LÝ NGƯỜI DÙNG";
             // 
@@ -259,17 +220,9 @@ namespace DongThucVat
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(48, 70);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 21);
+            this.label1.Size = new System.Drawing.Size(80, 28);
             this.label1.TabIndex = 57;
             this.label1.Text = "Họ tên:";
-            // 
-            // password
-            // 
-            this.password.DataPropertyName = "password";
-            this.password.HeaderText = "Mật khẩu";
-            this.password.Name = "password";
-            this.password.ReadOnly = true;
-            this.password.Width = 125;
             // 
             // txtDiaChi
             // 
@@ -277,14 +230,14 @@ namespace DongThucVat
             this.txtDiaChi.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiaChi.Location = new System.Drawing.Point(118, 211);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(459, 29);
+            this.txtDiaChi.Size = new System.Drawing.Size(459, 34);
             this.txtDiaChi.TabIndex = 48;
             // 
             // groupBox2
             // 
             this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox2.Controls.Add(this.rbtNV);
-            this.groupBox2.Controls.Add(this.rbtAdmin);
+            this.groupBox2.Controls.Add(this.rbtQL);
             this.groupBox2.Location = new System.Drawing.Point(622, 153);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(456, 44);
@@ -303,17 +256,17 @@ namespace DongThucVat
             this.rbtNV.Text = "Nhân viên";
             this.rbtNV.UseVisualStyleBackColor = true;
             // 
-            // rbtAdmin
+            // rbtQL
             // 
-            this.rbtAdmin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.rbtAdmin.AutoSize = true;
-            this.rbtAdmin.Location = new System.Drawing.Point(155, 13);
-            this.rbtAdmin.Name = "rbtAdmin";
-            this.rbtAdmin.Size = new System.Drawing.Size(76, 25);
-            this.rbtAdmin.TabIndex = 0;
-            this.rbtAdmin.TabStop = true;
-            this.rbtAdmin.Text = "Admin";
-            this.rbtAdmin.UseVisualStyleBackColor = true;
+            this.rbtQL.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.rbtQL.AutoSize = true;
+            this.rbtQL.Location = new System.Drawing.Point(155, 13);
+            this.rbtQL.Name = "rbtQL";
+            this.rbtQL.Size = new System.Drawing.Size(103, 32);
+            this.rbtQL.TabIndex = 0;
+            this.rbtQL.TabStop = true;
+            this.rbtQL.Text = "Quản lý";
+            this.rbtQL.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -334,7 +287,7 @@ namespace DongThucVat
             this.rbtOff.AutoSize = true;
             this.rbtOff.Location = new System.Drawing.Point(274, 13);
             this.rbtOff.Name = "rbtOff";
-            this.rbtOff.Size = new System.Drawing.Size(52, 25);
+            this.rbtOff.Size = new System.Drawing.Size(62, 32);
             this.rbtOff.TabIndex = 1;
             this.rbtOff.TabStop = true;
             this.rbtOff.Text = "Off";
@@ -346,7 +299,7 @@ namespace DongThucVat
             this.rbtOn.AutoSize = true;
             this.rbtOn.Location = new System.Drawing.Point(155, 13);
             this.rbtOn.Name = "rbtOn";
-            this.rbtOn.Size = new System.Drawing.Size(49, 25);
+            this.rbtOn.Size = new System.Drawing.Size(60, 32);
             this.rbtOn.TabIndex = 0;
             this.rbtOn.TabStop = true;
             this.rbtOn.Text = "On";
@@ -359,17 +312,9 @@ namespace DongThucVat
             this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(620, 118);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(85, 21);
+            this.label10.Size = new System.Drawing.Size(108, 28);
             this.label10.TabIndex = 63;
             this.label10.Text = "Ngày sinh:";
-            // 
-            // gender
-            // 
-            this.gender.DataPropertyName = "gender";
-            this.gender.HeaderText = "Giới tính";
-            this.gender.Name = "gender";
-            this.gender.ReadOnly = true;
-            this.gender.Width = 120;
             // 
             // dtpNgaySinh
             // 
@@ -380,7 +325,7 @@ namespace DongThucVat
             this.dtpNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgaySinh.Location = new System.Drawing.Point(711, 117);
             this.dtpNgaySinh.Name = "dtpNgaySinh";
-            this.dtpNgaySinh.Size = new System.Drawing.Size(310, 22);
+            this.dtpNgaySinh.Size = new System.Drawing.Size(310, 26);
             this.dtpNgaySinh.TabIndex = 51;
             this.dtpNgaySinh.Value = new System.DateTime(2023, 12, 3, 19, 16, 41, 0);
             // 
@@ -431,54 +376,6 @@ namespace DongThucVat
             this.dgv.TabIndex = 55;
             this.dgv.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseClick);
             // 
-            // id
-            // 
-            this.id.DataPropertyName = "id";
-            this.id.HeaderText = "";
-            this.id.Name = "id";
-            this.id.ReadOnly = true;
-            this.id.Visible = false;
-            // 
-            // name
-            // 
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "Họ tên";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.Width = 200;
-            // 
-            // email
-            // 
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "Email";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Width = 150;
-            // 
-            // phone
-            // 
-            this.phone.DataPropertyName = "phone";
-            this.phone.HeaderText = "SĐT";
-            this.phone.Name = "phone";
-            this.phone.ReadOnly = true;
-            this.phone.Width = 150;
-            // 
-            // address
-            // 
-            this.address.DataPropertyName = "address";
-            this.address.HeaderText = "Địa chỉ";
-            this.address.Name = "address";
-            this.address.ReadOnly = true;
-            this.address.Width = 150;
-            // 
-            // dob
-            // 
-            this.dob.DataPropertyName = "dob";
-            this.dob.HeaderText = "Ngày sinh";
-            this.dob.Name = "dob";
-            this.dob.ReadOnly = true;
-            this.dob.Width = 150;
-            // 
             // label5
             // 
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -486,7 +383,7 @@ namespace DongThucVat
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(50, 214);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 21);
+            this.label5.Size = new System.Drawing.Size(78, 28);
             this.label5.TabIndex = 60;
             this.label5.Text = "Địa chỉ:";
             // 
@@ -521,6 +418,124 @@ namespace DongThucVat
             this.btLuu.Text = "Lưu";
             this.btLuu.UseVisualStyleBackColor = false;
             this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "";
+            this.id.MinimumWidth = 6;
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            this.id.Width = 125;
+            // 
+            // name
+            // 
+            this.name.DataPropertyName = "name";
+            this.name.HeaderText = "Họ tên";
+            this.name.MinimumWidth = 6;
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.Width = 200;
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "email";
+            this.email.HeaderText = "Email";
+            this.email.MinimumWidth = 6;
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Width = 150;
+            // 
+            // phone
+            // 
+            this.phone.DataPropertyName = "phone";
+            this.phone.HeaderText = "SĐT";
+            this.phone.MinimumWidth = 6;
+            this.phone.Name = "phone";
+            this.phone.ReadOnly = true;
+            this.phone.Width = 150;
+            // 
+            // address
+            // 
+            this.address.DataPropertyName = "address";
+            this.address.HeaderText = "Địa chỉ";
+            this.address.MinimumWidth = 6;
+            this.address.Name = "address";
+            this.address.ReadOnly = true;
+            this.address.Width = 150;
+            // 
+            // dob
+            // 
+            this.dob.DataPropertyName = "dob";
+            this.dob.HeaderText = "Ngày sinh";
+            this.dob.MinimumWidth = 6;
+            this.dob.Name = "dob";
+            this.dob.ReadOnly = true;
+            this.dob.Width = 150;
+            // 
+            // gender
+            // 
+            this.gender.DataPropertyName = "gender";
+            this.gender.HeaderText = "Giới tính";
+            this.gender.MinimumWidth = 6;
+            this.gender.Name = "gender";
+            this.gender.ReadOnly = true;
+            this.gender.Width = 120;
+            // 
+            // password
+            // 
+            this.password.DataPropertyName = "password";
+            this.password.HeaderText = "Mật khẩu";
+            this.password.MinimumWidth = 6;
+            this.password.Name = "password";
+            this.password.ReadOnly = true;
+            this.password.Width = 125;
+            // 
+            // is_admin
+            // 
+            this.is_admin.DataPropertyName = "is_admin";
+            this.is_admin.HeaderText = "Quyền";
+            this.is_admin.MinimumWidth = 6;
+            this.is_admin.Name = "is_admin";
+            this.is_admin.ReadOnly = true;
+            this.is_admin.Width = 125;
+            // 
+            // last_signined_time
+            // 
+            this.last_signined_time.DataPropertyName = "last_signined_time";
+            this.last_signined_time.HeaderText = "Đăng nhập lần cuối";
+            this.last_signined_time.MinimumWidth = 6;
+            this.last_signined_time.Name = "last_signined_time";
+            this.last_signined_time.ReadOnly = true;
+            this.last_signined_time.Width = 220;
+            // 
+            // created_at
+            // 
+            this.created_at.DataPropertyName = "created_at";
+            this.created_at.HeaderText = "Khởi tạo";
+            this.created_at.MinimumWidth = 6;
+            this.created_at.Name = "created_at";
+            this.created_at.ReadOnly = true;
+            this.created_at.Width = 150;
+            // 
+            // updated_at
+            // 
+            this.updated_at.DataPropertyName = "updated_at";
+            this.updated_at.HeaderText = "Cập nhật";
+            this.updated_at.MinimumWidth = 6;
+            this.updated_at.Name = "updated_at";
+            this.updated_at.ReadOnly = true;
+            this.updated_at.Width = 150;
+            // 
+            // status
+            // 
+            this.status.DataPropertyName = "status";
+            this.status.HeaderText = "Trạng thái";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            this.status.Width = 125;
             // 
             // ucUser
             // 
@@ -565,14 +580,9 @@ namespace DongThucVat
         }
 
         #endregion
-        private System.Windows.Forms.DataGridViewTextBoxColumn last_signined_time;
-        private System.Windows.Forms.DataGridViewTextBoxColumn created_at;
-        private System.Windows.Forms.DataGridViewTextBoxColumn updated_at;
-        private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.ComboBox cbGioiTinh;
         private System.Windows.Forms.Button btXoa;
         private System.Windows.Forms.Button btSua;
-        private System.Windows.Forms.DataGridViewTextBoxColumn is_admin;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.TextBox txtHoTen;
         private System.Windows.Forms.TextBox txtSDT;
@@ -583,27 +593,32 @@ namespace DongThucVat
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn password;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rbtNV;
-        private System.Windows.Forms.RadioButton rbtAdmin;
+        private System.Windows.Forms.RadioButton rbtQL;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbtOff;
         private System.Windows.Forms.RadioButton rbtOn;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.DataGridViewTextBoxColumn gender;
         private System.Windows.Forms.DateTimePicker dtpNgaySinh;
         private System.Windows.Forms.Button btThem;
         private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btHuy;
+        private System.Windows.Forms.Button btLuu;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn phone;
         private System.Windows.Forms.DataGridViewTextBoxColumn address;
         private System.Windows.Forms.DataGridViewTextBoxColumn dob;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btHuy;
-        private System.Windows.Forms.Button btLuu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn is_admin;
+        private System.Windows.Forms.DataGridViewTextBoxColumn last_signined_time;
+        private System.Windows.Forms.DataGridViewTextBoxColumn created_at;
+        private System.Windows.Forms.DataGridViewTextBoxColumn updated_at;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
     }
 }

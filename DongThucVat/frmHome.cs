@@ -119,12 +119,12 @@ namespace DongThucVat
         private void btnUsers_Click(object sender, EventArgs e)
         {
             moveSidePanel(btnUsers);
-            if (Boolean.Parse(is_admin) == true)
+            if (Int16.Parse(is_admin.ToString()) == 1)
             {
                 ucUser uc = new ucUser();
                 AddControlsToPanel(uc);
             }
-            if (Boolean.Parse(is_admin) == false)
+            if (Int16.Parse(is_admin.ToString()) == 2 || Int16.Parse(is_admin.ToString()) == 3)
             {
                 ucUserInfo uc = new ucUserInfo();
                 uc.Id = Int32.Parse(id);
@@ -137,12 +137,23 @@ namespace DongThucVat
         private void btDongVat_Click(object sender, EventArgs e)
         {
             moveSidePanel(btDongVat);
-            ucChon uc = new ucChon();
-            uc.idChon = id;
-            uc.loaiChon = 0;// Truyền vào thuộc tính của form tiếp theo
-            AddControlsToPanel(uc);
-            btBack.Visible = false;
-            lbTieuDe.Visible = true;
+            if (Int16.Parse(is_admin.ToString()) == 3)
+            {
+                ucSearch uc = new ucSearch();
+                uc.Loai = 0;
+                AddControlsToPanel(uc);
+                btBack.Visible = false;
+                lbTieuDe.Visible = true;
+            }
+            else
+            {
+                ucChon uc = new ucChon();
+                uc.idChon = id;
+                uc.loaiChon = 0;// Truyền vào thuộc tính của form tiếp theo
+                AddControlsToPanel(uc);
+                btBack.Visible = false;
+                lbTieuDe.Visible = true;
+            }
         }
 
         public void loadTieuDe()
@@ -166,11 +177,17 @@ namespace DongThucVat
         {
             conn = Connect.ConnectDB();
             lbFirstName.Text = name + ".";
-            if (Boolean.Parse(is_admin) == true)
+            if (Int16.Parse(is_admin.ToString()) == 1)
                 lbRole.Text = "Admin.";
-            if (Boolean.Parse(is_admin) == false)
+            if (Int16.Parse(is_admin.ToString()) == 2)
+            {
+                lbRole.Text = "Quản lý.";
+            }
+            if (Int16.Parse(is_admin.ToString()) == 3)
             {
                 lbRole.Text = "Nhân viên.";
+                btSettings.Visible = false;
+                btThongKe.Visible = false;
             }
             loadLogo();
             loadTieuDe();
@@ -225,12 +242,23 @@ namespace DongThucVat
         private void btThucVat_Click(object sender, EventArgs e)
         {
             moveSidePanel(btThucVat);
-            ucChon uc = new ucChon();
-            uc.idChon = id;
-            uc.loaiChon = 1;// Truyền vào thuộc tính của form tiếp theo
-            AddControlsToPanel(uc);
-            btBack.Visible = false;
-            lbTieuDe.Visible = true;
+            if (Int16.Parse(is_admin.ToString()) == 3)
+            {
+                ucSearch uc = new ucSearch();
+                uc.Loai = 1;
+                AddControlsToPanel(uc);
+                btBack.Visible = false;
+                lbTieuDe.Visible = true;
+            }
+            else
+            {
+                ucChon uc = new ucChon();
+                uc.idChon = id;
+                uc.loaiChon = 1;// Truyền vào thuộc tính của form tiếp theo
+                AddControlsToPanel(uc);
+                btBack.Visible = false;
+                lbTieuDe.Visible = true;
+            }
         }
 
         private void btSettings_Click(object sender, EventArgs e)

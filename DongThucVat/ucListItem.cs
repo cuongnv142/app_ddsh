@@ -25,9 +25,14 @@ namespace DongThucVat
             ItemClick?.Invoke(this, e);
         }
 
-        private void ucListItem_Click(object sender, EventArgs e)
+        private void ucListItem_DoubleClick(object sender, EventArgs e)
         {
             OnItemClick(EventArgs.Empty);
+        }
+
+        private void ucListItem_Click(object sender, EventArgs e)
+        {
+            //OnItemClick(EventArgs.Empty);
         }
 
         #region Properties
@@ -58,6 +63,7 @@ namespace DongThucVat
             get { return _lop; }
             set { _lop = value; lbLop.Text = value; }
         }
+
         [Category("Custom Props")]
         public string Nganh
         {

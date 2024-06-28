@@ -89,10 +89,10 @@ namespace DongThucVat
             cbND64CP.SelectedItem = dt.Rows[0]["muc_do_bao_ton_nd64cp"].ToString();
             rtxtCongDung.Text = dt.Rows[0]["gia_tri_su_dung"].ToString();
             rtxtDacDiem.Text = dt.Rows[0]["dac_diem"].ToString(); ;
-            if (Boolean.Parse(dt.Rows[0]["status"].ToString()) == true)
-                rbtOn.Checked = true;
-            if (Boolean.Parse(dt.Rows[0]["status"].ToString()) == false)
-                rbtOff.Checked = true;
+            //if (Boolean.Parse(dt.Rows[0]["status"].ToString()) == true)
+            //    rbtOn.Checked = true;
+            //if (Boolean.Parse(dt.Rows[0]["status"].ToString()) == false)
+            //    rbtOff.Checked = true;
         }
 
         public void xoaTrang(bool b)
@@ -108,8 +108,8 @@ namespace DongThucVat
             cbND64CP.SelectedIndex = 0;
             rtxtCongDung.Text = "";
             rtxtDacDiem.Text = "";
-            rbtOn.Checked = false;
-            rbtOff.Checked = true;
+            //rbtOn.Checked = false;
+            //rbtOff.Checked = true;
             cbLoad();
             selectedImages.Clear();
         }
@@ -338,7 +338,8 @@ namespace DongThucVat
                         cmd.Parameters.Add("@muc_do_bao_ton_sdvn", SqlDbType.NVarChar).Value = cbSDVN.SelectedIndex == 0 ? "" : cbSDVN.SelectedItem?.ToString();
                         cmd.Parameters.Add("@muc_do_bao_ton_ndcp", SqlDbType.NVarChar).Value = cbNDCP.SelectedIndex == 0 ? "" : cbNDCP.SelectedItem?.ToString();
                         cmd.Parameters.Add("@muc_do_bao_ton_nd64cp  ", SqlDbType.NVarChar).Value = cbND64CP.SelectedIndex == 0 ? "" : cbND64CP.SelectedItem?.ToString();
-                        cmd.Parameters.Add("@status", SqlDbType.Bit).Value = rbtOn.Checked ? 1 : 0;
+                        cmd.Parameters.Add("@status", SqlDbType.Bit).Value = 1;
+                        //cmd.Parameters.Add("@status", SqlDbType.Bit).Value = rbtOn.Checked ? 1 : 0;
                         cmd.Parameters.Add("@created_at", SqlDbType.DateTime).Value = createdAt;
                         cmd.Parameters.Add("@created_by", SqlDbType.Int).Value = Int32.Parse(idUser);
 
@@ -373,7 +374,7 @@ namespace DongThucVat
                         cmd.Parameters.Add("@muc_do_bao_ton_sdvn", SqlDbType.NVarChar).Value = cbSDVN.SelectedIndex == 0 ? "" : cbSDVN.SelectedItem?.ToString();
                         cmd.Parameters.Add("@muc_do_bao_ton_ndcp", SqlDbType.NVarChar).Value = cbNDCP.SelectedIndex == 0 ? "" : cbNDCP.SelectedItem?.ToString();
                         cmd.Parameters.Add("@muc_do_bao_ton_nd64cp  ", SqlDbType.NVarChar).Value = cbND64CP.SelectedIndex == 0 ? "" : cbND64CP.SelectedItem?.ToString();
-                        cmd.Parameters.Add("@status", SqlDbType.Bit).Value = rbtOn.Checked ? 1 : 0;
+                        cmd.Parameters.Add("@status", SqlDbType.Bit).Value = 1;
                         cmd.Parameters.Add("@updated_at", SqlDbType.DateTime).Value = updatedAt;
                         cmd.Parameters.Add("@updated_by", SqlDbType.Int).Value = Int32.Parse(idUser);
 

@@ -82,7 +82,27 @@ namespace DongThucVat
             conn.Close();
         }
 
-        private void btLuu_Click(object sender, EventArgs e)
+        private void btDoiMatKhau_Click_1(object sender, EventArgs e)
+        {
+            using (frmDoiMatKhau frm = new frmDoiMatKhau())
+            {
+                frm.Id = id;
+                frm.ShowDialog();
+            }
+        }
+
+        private void btSuaThongTin_Click(object sender, EventArgs e)
+        {
+            khoaMo(false);
+        }
+
+        private void btHuy_Click_1(object sender, EventArgs e)
+        {
+            khoaMo(true);
+            loadThongTin();
+        }
+
+        private void btLuu_Click_1(object sender, EventArgs e)
         {
             if (txtEmail.Text == "")
             {
@@ -108,22 +128,6 @@ namespace DongThucVat
 
             khoaMo(true);
             loadThongTin();
-        }
-
-        private void btHuy_Click(object sender, EventArgs e)
-        {
-            khoaMo(true);
-            loadThongTin();
-        }
-
-        private void btSuaThongTin_Click_1(object sender, EventArgs e)
-        {
-            khoaMo(false);
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

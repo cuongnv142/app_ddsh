@@ -128,7 +128,15 @@ namespace DongThucVat
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void btLogin_Click(object sender, EventArgs e)
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                performLogin();
+            }
+        }
+
+        private void performLogin()
         {
             // Kiem tra du lieu nhap
             if (txtEmail.Text == "" || txtPassword.Text == "")
@@ -155,10 +163,23 @@ namespace DongThucVat
                     frm.nameHome = name;// Truyền vào thuộc tính first_name_Home
                     frm.is_adminHome = is_admin;// Truyền vào thuộc tính is_admin_Home
 
-                    frm.ShowDialog();                    
+                    frm.ShowDialog();
                 }
                 this.Dispose();
             }
+        }
+
+        private void txtPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                performLogin();
+            }
+        }
+
+        private void btLogin_Click(object sender, EventArgs e)
+        {
+            performLogin();
         }
 
         public bool loginCheck()

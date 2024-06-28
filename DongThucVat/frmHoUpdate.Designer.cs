@@ -31,15 +31,12 @@ namespace DongThucVat
         {
             this.label1 = new System.Windows.Forms.Label();
             this.cb = new System.Windows.Forms.ComboBox();
-            this.rbtOff = new System.Windows.Forms.RadioButton();
-            this.rbtOn = new System.Windows.Forms.RadioButton();
             this.txtTenLatinh = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtTenTiengViet = new System.Windows.Forms.TextBox();
             this.btHuy = new System.Windows.Forms.Button();
             this.btLuu = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.lbNganh = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -51,9 +48,9 @@ namespace DongThucVat
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(145, 151);
+            this.label1.Location = new System.Drawing.Point(145, 108);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(39, 25);
+            this.label1.Size = new System.Drawing.Size(50, 32);
             this.label1.TabIndex = 10;
             this.label1.Text = "Bộ:";
             // 
@@ -61,57 +58,33 @@ namespace DongThucVat
             // 
             this.cb.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb.FormattingEnabled = true;
-            this.cb.Location = new System.Drawing.Point(193, 148);
+            this.cb.Location = new System.Drawing.Point(193, 105);
             this.cb.Name = "cb";
-            this.cb.Size = new System.Drawing.Size(549, 33);
+            this.cb.Size = new System.Drawing.Size(549, 40);
             this.cb.TabIndex = 2;
-            // 
-            // rbtOff
-            // 
-            this.rbtOff.AutoSize = true;
-            this.rbtOff.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtOff.Location = new System.Drawing.Point(332, 104);
-            this.rbtOff.Name = "rbtOff";
-            this.rbtOff.Size = new System.Drawing.Size(58, 29);
-            this.rbtOff.TabIndex = 1;
-            this.rbtOff.TabStop = true;
-            this.rbtOff.Text = "Off";
-            this.rbtOff.UseVisualStyleBackColor = true;
-            // 
-            // rbtOn
-            // 
-            this.rbtOn.AutoSize = true;
-            this.rbtOn.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbtOn.Location = new System.Drawing.Point(218, 102);
-            this.rbtOn.Name = "rbtOn";
-            this.rbtOn.Size = new System.Drawing.Size(55, 29);
-            this.rbtOn.TabIndex = 0;
-            this.rbtOn.TabStop = true;
-            this.rbtOn.Text = "On";
-            this.rbtOn.UseVisualStyleBackColor = true;
             // 
             // txtTenLatinh
             // 
-            this.txtTenLatinh.Location = new System.Drawing.Point(193, 253);
+            this.txtTenLatinh.Location = new System.Drawing.Point(193, 210);
             this.txtTenLatinh.Name = "txtTenLatinh";
-            this.txtTenLatinh.Size = new System.Drawing.Size(549, 33);
+            this.txtTenLatinh.Size = new System.Drawing.Size(549, 39);
             this.txtTenLatinh.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(83, 256);
+            this.label2.Location = new System.Drawing.Point(83, 213);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 25);
+            this.label2.Size = new System.Drawing.Size(134, 32);
             this.label2.TabIndex = 12;
             this.label2.Text = "Tên Latinh:";
             // 
             // txtTenTiengViet
             // 
-            this.txtTenTiengViet.Location = new System.Drawing.Point(193, 201);
+            this.txtTenTiengViet.Location = new System.Drawing.Point(193, 158);
             this.txtTenTiengViet.Name = "txtTenTiengViet";
-            this.txtTenTiengViet.Size = new System.Drawing.Size(549, 33);
+            this.txtTenTiengViet.Size = new System.Drawing.Size(549, 39);
             this.txtTenTiengViet.TabIndex = 3;
             // 
             // btHuy
@@ -148,21 +121,11 @@ namespace DongThucVat
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(53, 204);
+            this.label8.Location = new System.Drawing.Point(53, 161);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(134, 25);
+            this.label8.Size = new System.Drawing.Size(172, 32);
             this.label8.TabIndex = 11;
             this.label8.Text = "Tên tiếng Việt:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(83, 104);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(105, 25);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "Tình trạng:";
             // 
             // lbNganh
             // 
@@ -170,7 +133,7 @@ namespace DongThucVat
             this.lbNganh.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNganh.Location = new System.Drawing.Point(316, 34);
             this.lbNganh.Name = "lbNganh";
-            this.lbNganh.Size = new System.Drawing.Size(168, 30);
+            this.lbNganh.Size = new System.Drawing.Size(214, 38);
             this.lbNganh.TabIndex = 8;
             this.lbNganh.Text = "HỌ ĐỘNG VẬT";
             // 
@@ -217,15 +180,12 @@ namespace DongThucVat
             this.ClientSize = new System.Drawing.Size(800, 400);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cb);
-            this.Controls.Add(this.rbtOff);
-            this.Controls.Add(this.rbtOn);
             this.Controls.Add(this.txtTenLatinh);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtTenTiengViet);
             this.Controls.Add(this.btHuy);
             this.Controls.Add(this.btLuu);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.lbNganh);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
@@ -248,15 +208,12 @@ namespace DongThucVat
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cb;
-        private System.Windows.Forms.RadioButton rbtOff;
-        private System.Windows.Forms.RadioButton rbtOn;
         private System.Windows.Forms.TextBox txtTenLatinh;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTenTiengViet;
         private System.Windows.Forms.Button btHuy;
         private System.Windows.Forms.Button btLuu;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbNganh;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;

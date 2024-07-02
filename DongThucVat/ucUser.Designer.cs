@@ -53,9 +53,6 @@ namespace DongThucVat
             this.dtpNgaySinh = new System.Windows.Forms.DateTimePicker();
             this.btThem = new System.Windows.Forms.Button();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.label5 = new System.Windows.Forms.Label();
-            this.btHuy = new System.Windows.Forms.Button();
-            this.btLuu = new System.Windows.Forms.Button();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +66,9 @@ namespace DongThucVat
             this.created_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.updated_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btHuy = new System.Windows.Forms.Button();
+            this.btLuu = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -279,7 +279,7 @@ namespace DongThucVat
             this.groupBox1.Size = new System.Drawing.Size(456, 44);
             this.groupBox1.TabIndex = 65;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Trạng thái:";
+            this.groupBox1.Text = "Khóa người dùng:";
             // 
             // rbtOff
             // 
@@ -287,10 +287,10 @@ namespace DongThucVat
             this.rbtOff.AutoSize = true;
             this.rbtOff.Location = new System.Drawing.Point(274, 13);
             this.rbtOff.Name = "rbtOff";
-            this.rbtOff.Size = new System.Drawing.Size(62, 32);
+            this.rbtOff.Size = new System.Drawing.Size(79, 32);
             this.rbtOff.TabIndex = 1;
             this.rbtOff.TabStop = true;
-            this.rbtOff.Text = "Off";
+            this.rbtOff.Text = "Khóa";
             this.rbtOff.UseVisualStyleBackColor = true;
             // 
             // rbtOn
@@ -299,10 +299,10 @@ namespace DongThucVat
             this.rbtOn.AutoSize = true;
             this.rbtOn.Location = new System.Drawing.Point(155, 13);
             this.rbtOn.Name = "rbtOn";
-            this.rbtOn.Size = new System.Drawing.Size(60, 32);
+            this.rbtOn.Size = new System.Drawing.Size(144, 32);
             this.rbtOn.TabIndex = 0;
             this.rbtOn.TabStop = true;
-            this.rbtOn.Text = "On";
+            this.rbtOn.Text = "Không khóa";
             this.rbtOn.UseVisualStyleBackColor = true;
             // 
             // label10
@@ -349,6 +349,7 @@ namespace DongThucVat
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToOrderColumns = true;
             this.dgv.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgv.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -374,50 +375,8 @@ namespace DongThucVat
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv.Size = new System.Drawing.Size(1111, 256);
             this.dgv.TabIndex = 55;
+            this.dgv.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgv_CellFormatting);
             this.dgv.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgv_CellMouseClick);
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(50, 214);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 28);
-            this.label5.TabIndex = 60;
-            this.label5.Text = "Địa chỉ:";
-            // 
-            // btHuy
-            // 
-            this.btHuy.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btHuy.FlatAppearance.BorderSize = 0;
-            this.btHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btHuy.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btHuy.ForeColor = System.Drawing.Color.White;
-            this.btHuy.Location = new System.Drawing.Point(624, 578);
-            this.btHuy.Name = "btHuy";
-            this.btHuy.Size = new System.Drawing.Size(206, 38);
-            this.btHuy.TabIndex = 66;
-            this.btHuy.Text = "Hủy";
-            this.btHuy.UseVisualStyleBackColor = false;
-            this.btHuy.Click += new System.EventHandler(this.btHuy_Click);
-            // 
-            // btLuu
-            // 
-            this.btLuu.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btLuu.BackColor = System.Drawing.Color.Green;
-            this.btLuu.FlatAppearance.BorderSize = 0;
-            this.btLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btLuu.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLuu.ForeColor = System.Drawing.Color.White;
-            this.btLuu.Location = new System.Drawing.Point(872, 578);
-            this.btLuu.Name = "btLuu";
-            this.btLuu.Size = new System.Drawing.Size(206, 38);
-            this.btLuu.TabIndex = 67;
-            this.btLuu.Text = "Lưu";
-            this.btLuu.UseVisualStyleBackColor = false;
-            this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
             // 
             // id
             // 
@@ -536,6 +495,49 @@ namespace DongThucVat
             this.status.Name = "status";
             this.status.ReadOnly = true;
             this.status.Width = 125;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(50, 214);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 28);
+            this.label5.TabIndex = 60;
+            this.label5.Text = "Địa chỉ:";
+            // 
+            // btHuy
+            // 
+            this.btHuy.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btHuy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btHuy.FlatAppearance.BorderSize = 0;
+            this.btHuy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btHuy.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btHuy.ForeColor = System.Drawing.Color.White;
+            this.btHuy.Location = new System.Drawing.Point(624, 578);
+            this.btHuy.Name = "btHuy";
+            this.btHuy.Size = new System.Drawing.Size(206, 38);
+            this.btHuy.TabIndex = 66;
+            this.btHuy.Text = "Hủy";
+            this.btHuy.UseVisualStyleBackColor = false;
+            this.btHuy.Click += new System.EventHandler(this.btHuy_Click);
+            // 
+            // btLuu
+            // 
+            this.btLuu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btLuu.BackColor = System.Drawing.Color.Green;
+            this.btLuu.FlatAppearance.BorderSize = 0;
+            this.btLuu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btLuu.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLuu.ForeColor = System.Drawing.Color.White;
+            this.btLuu.Location = new System.Drawing.Point(872, 578);
+            this.btLuu.Name = "btLuu";
+            this.btLuu.Size = new System.Drawing.Size(206, 38);
+            this.btLuu.TabIndex = 67;
+            this.btLuu.Text = "Lưu";
+            this.btLuu.UseVisualStyleBackColor = false;
+            this.btLuu.Click += new System.EventHandler(this.btLuu_Click);
             // 
             // ucUser
             // 

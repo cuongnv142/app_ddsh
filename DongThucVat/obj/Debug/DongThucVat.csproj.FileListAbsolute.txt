@@ -46,3 +46,4 @@ C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\EPPlus.dll
 C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\EPPlus.Interfaces.dll
 C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\EPPlus.System.Drawing.dll
 C:\Users\Dell\source\repos\DongThucVat\DongThucVat\bin\Debug\EPPlus.xml
+C:\Users\Dell\source\repos\DongThucVat\DongThucVat\obj\Debug\DongThucVat.ucChonAdmin.resources

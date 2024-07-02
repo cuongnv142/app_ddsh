@@ -32,6 +32,7 @@ namespace DongThucVat
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.fpnlKetQua = new System.Windows.Forms.FlowLayoutPanel();
+            this.ucListItem1 = new DongThucVat.ucListItem();
             this.pnlSearch = new System.Windows.Forms.Panel();
             this.lbThongBao = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -66,7 +67,6 @@ namespace DongThucVat
             this.panel1 = new System.Windows.Forms.Panel();
             this.btNextPage = new System.Windows.Forms.Button();
             this.btPrevPage = new System.Windows.Forms.Button();
-            this.ucListItem1 = new DongThucVat.ucListItem();
             this.fpnlKetQua.SuspendLayout();
             this.pnlSearch.SuspendLayout();
             this.pnlDGV.SuspendLayout();
@@ -84,6 +84,25 @@ namespace DongThucVat
             this.fpnlKetQua.Name = "fpnlKetQua";
             this.fpnlKetQua.Size = new System.Drawing.Size(390, 589);
             this.fpnlKetQua.TabIndex = 0;
+            // 
+            // ucListItem1
+            // 
+            this.ucListItem1.Anh = null;
+            this.ucListItem1.Bo = "(Bộ)";
+            this.ucListItem1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ucListItem1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ucListItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(24)))));
+            this.ucListItem1.Ho = "(Họ)";
+            this.ucListItem1.Id = "";
+            this.ucListItem1.Location = new System.Drawing.Point(3, 3);
+            this.ucListItem1.Lop = "(Lớp)";
+            this.ucListItem1.Name = "ucListItem1";
+            this.ucListItem1.Nganh = "(Ngành)";
+            this.ucListItem1.Padding = new System.Windows.Forms.Padding(3);
+            this.ucListItem1.Size = new System.Drawing.Size(498, 172);
+            this.ucListItem1.Stt = 1;
+            this.ucListItem1.TabIndex = 0;
+            this.ucListItem1.Tenloai = "(Loài)";
             // 
             // pnlSearch
             // 
@@ -345,6 +364,7 @@ namespace DongThucVat
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.BackgroundColor = System.Drawing.SystemColors.Control;
@@ -494,25 +514,6 @@ namespace DongThucVat
             this.btPrevPage.Text = "<<";
             this.btPrevPage.UseVisualStyleBackColor = false;
             this.btPrevPage.Click += new System.EventHandler(this.btPrevPage_Click);
-            // 
-            // ucListItem1
-            // 
-            this.ucListItem1.Anh = null;
-            this.ucListItem1.Bo = "(Bộ)";
-            this.ucListItem1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ucListItem1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ucListItem1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(24)))));
-            this.ucListItem1.Ho = "(Họ)";
-            this.ucListItem1.Id = "";
-            this.ucListItem1.Location = new System.Drawing.Point(3, 3);
-            this.ucListItem1.Lop = "(Lớp)";
-            this.ucListItem1.Name = "ucListItem1";
-            this.ucListItem1.Nganh = "(Ngành)";
-            this.ucListItem1.Padding = new System.Windows.Forms.Padding(3);
-            this.ucListItem1.Size = new System.Drawing.Size(498, 172);
-            this.ucListItem1.Stt = 1;
-            this.ucListItem1.TabIndex = 0;
-            this.ucListItem1.Tenloai = "(Loài)";
             // 
             // ucSearch
             // 

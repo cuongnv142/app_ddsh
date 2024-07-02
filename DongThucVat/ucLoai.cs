@@ -24,7 +24,7 @@ namespace DongThucVat
         private int currentPage = 1;
         private int pageSize = 300; // Số bản ghi trên mỗi trang
         private int loai;
-        private string idUser;
+        private string idUser, search;
         public int loaiLoai { get => loai; set => loai = value; }
         public string idUserLoai { get => idUser; set => idUser = value; }
 
@@ -68,18 +68,32 @@ namespace DongThucVat
                 int totalPages = (int)Math.Ceiling((double)totalRows / pageSize);
 
                 int offset = (currentPage - 1) * pageSize;
-                if (idFK == 0)
+                if (idFK == 0 && search == "")
                     sql = $@"SELECT * FROM (
                         SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS STT, l.*, h.name AS namefk
                         FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
                         WHERE l.loai = {loai}
                      ) AS NumberedRows
                      WHERE STT > {offset} AND STT <= {offset + pageSize}";
-                else
+                if (idFK == 0 && search != "")
+                    sql = $@"SELECT * FROM (
+                        SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS STT, l.*, h.name AS namefk
+                        FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
+                        WHERE l.loai = {loai} AND (l.name LIKE N'%{search}%' OR l.name_latinh LIKE N'%{search}%')
+                     ) AS NumberedRows
+                     WHERE STT > {offset} AND STT <= {offset + pageSize}";
+                if (idFK != 0 && search == "")
                     sql = $@"SELECT * FROM (
                         SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS STT, l.*, h.name AS namefk
                         FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
                         WHERE l.loai = {loai} AND l.id_dtv_ho = {cb.SelectedValue}
+                     ) AS NumberedRows
+                     WHERE STT > {offset} AND STT <= {offset + pageSize}";
+                if (idFK != 0 && search != "")
+                    sql = $@"SELECT * FROM (
+                        SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS STT, l.*, h.name AS namefk
+                        FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
+                        WHERE l.loai = {loai} AND l.id_dtv_ho = {cb.SelectedValue} AND (l.name LIKE N'%{search}%' OR l.name_latinh LIKE N'%{search}%')
                      ) AS NumberedRows
                      WHERE STT > {offset} AND STT <= {offset + pageSize}";
 
@@ -247,6 +261,15 @@ namespace DongThucVat
             }
         }
 
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            search = txtSearch.Text.Trim();
+            pageSize = 300;
+            dgvLoad();
+            vitri = null;
+            UpdateNavigationButtons();
+        }
+
         private void btPrev_Click(object sender, EventArgs e)
         {
             if (currentPage > 1)
@@ -271,9 +294,10 @@ namespace DongThucVat
                     idFK = 0;
                 }
             }
-
+            else
+                idFK = 0;
             // Cập nhật kích thước trang khi chọn họ mới
-            pageSize = 300; // Đặt kích thước trang mặc định, bạn có thể điều chỉnh theo mong muốn
+            pageSize = 300;
             dgvLoad();
             vitri = null;
             UpdateNavigationButtons(); // Cập nhật trạng thái của nút sau khi chuyển họ

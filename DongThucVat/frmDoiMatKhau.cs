@@ -16,8 +16,8 @@ namespace DongThucVat
         SqlConnection conn;
         string sql = "";
 
-        private int id;
-        public int Id { get => id; set => id = value; }
+        private string id;
+        public string Id { get => id; set => id = value; }
 
         public frmDoiMatKhau()
         {
@@ -53,7 +53,7 @@ namespace DongThucVat
                 sql = "UPDATE [user] SET password = @Password WHERE id = @id AND password = @PasswordCu";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.Add("@Password", SqlDbType.NVarChar).Value = txtMatKhauMoi.Text.Trim();
-                cmd.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+                cmd.Parameters.Add("@id", SqlDbType.Int).Value = Int32.Parse(id);
                 cmd.Parameters.Add("@PasswordCu", SqlDbType.NVarChar).Value = txtMatKhauCu.Text.Trim();
                 SqlDataAdapter da = new SqlDataAdapter();
                 da.SelectCommand = cmd;
@@ -71,7 +71,7 @@ namespace DongThucVat
                 conn.Open();
             sql = "SELECT * FROM [user] WHERE id = @id AND password = @Password";
             SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.Add("@id", SqlDbType.NVarChar).Value = id;
+            cmd.Parameters.Add("@id", SqlDbType.Int).Value = Int32.Parse(id);
             cmd.Parameters.Add("@Password", SqlDbType.NVarChar).Value = txtMatKhauCu.Text.Trim();
             SqlDataAdapter da = new SqlDataAdapter();
             da.SelectCommand = cmd;

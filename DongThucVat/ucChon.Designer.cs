@@ -130,7 +130,7 @@ namespace DongThucVat
             // btSearch
             // 
             this.btSearch.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(24)))));
+            this.btSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(120)))), ((int)(((byte)(10)))));
             this.btSearch.FlatAppearance.BorderColor = System.Drawing.SystemColors.ButtonFace;
             this.btSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSearch.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

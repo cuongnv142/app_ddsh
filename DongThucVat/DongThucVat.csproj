@@ -186,6 +186,12 @@
     <Compile Include="ucChon.Designer.cs">
       <DependentUpon>ucChon.cs</DependentUpon>
     </Compile>
+    <Compile Include="ucChonAdmin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucChonAdmin.Designer.cs">
+      <DependentUpon>ucChonAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="ucGioiThieu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -309,6 +315,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ucChon.resx">
       <DependentUpon>ucChon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucChonAdmin.resx">
+      <DependentUpon>ucChonAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ucGioiThieu.resx">
       <DependentUpon>ucGioiThieu.cs</DependentUpon>

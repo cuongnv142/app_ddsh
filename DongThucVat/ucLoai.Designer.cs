@@ -30,7 +30,7 @@ namespace DongThucVat
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucLoai));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cb = new System.Windows.Forms.ComboBox();
             this.btThem = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -66,6 +66,7 @@ namespace DongThucVat
             this.btNext = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.panel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
@@ -81,7 +82,7 @@ namespace DongThucVat
             this.cb.Location = new System.Drawing.Point(691, 72);
             this.cb.Name = "cb";
             this.cb.Size = new System.Drawing.Size(400, 40);
-            this.cb.TabIndex = 4;
+            this.cb.TabIndex = 0;
             this.cb.SelectedIndexChanged += new System.EventHandler(this.cb_SelectedIndexChanged);
             // 
             // btThem
@@ -95,7 +96,7 @@ namespace DongThucVat
             this.btThem.Location = new System.Drawing.Point(0, 54);
             this.btThem.Name = "btThem";
             this.btThem.Size = new System.Drawing.Size(150, 67);
-            this.btThem.TabIndex = 0;
+            this.btThem.TabIndex = 1;
             this.btThem.Text = "   Thêm";
             this.btThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btThem.UseVisualStyleBackColor = true;
@@ -104,8 +105,8 @@ namespace DongThucVat
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(127)))), ((int)(((byte)(24)))));
-            this.panel5.Controls.Add(this.panel2);
             this.panel5.Controls.Add(this.label1);
+            this.panel5.Controls.Add(this.panel2);
             this.panel5.Controls.Add(this.cb);
             this.panel5.Controls.Add(this.btRefresh);
             this.panel5.Controls.Add(this.btXoa);
@@ -120,12 +121,13 @@ namespace DongThucVat
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel2.Controls.Add(this.txtSearch);
             this.panel2.Controls.Add(this.lbTieuDe);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1107, 45);
-            this.panel2.TabIndex = 22;
+            this.panel2.TabIndex = 5;
             // 
             // lbTieuDe
             // 
@@ -136,7 +138,7 @@ namespace DongThucVat
             this.lbTieuDe.Location = new System.Drawing.Point(452, 4);
             this.lbTieuDe.Name = "lbTieuDe";
             this.lbTieuDe.Size = new System.Drawing.Size(251, 41);
-            this.lbTieuDe.TabIndex = 15;
+            this.lbTieuDe.TabIndex = 1;
             this.lbTieuDe.Text = "LOÀI ĐỘNG VẬT";
             // 
             // label1
@@ -145,10 +147,10 @@ namespace DongThucVat
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Image = ((System.Drawing.Image)(resources.GetObject("label1.Image")));
-            this.label1.Location = new System.Drawing.Point(648, 75);
+            this.label1.Location = new System.Drawing.Point(648, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 32);
-            this.label1.TabIndex = 21;
+            this.label1.TabIndex = 6;
             this.label1.Text = "     ";
             // 
             // btRefresh
@@ -162,7 +164,7 @@ namespace DongThucVat
             this.btRefresh.Location = new System.Drawing.Point(450, 54);
             this.btRefresh.Name = "btRefresh";
             this.btRefresh.Size = new System.Drawing.Size(167, 67);
-            this.btRefresh.TabIndex = 3;
+            this.btRefresh.TabIndex = 4;
             this.btRefresh.Text = "   Làm mới";
             this.btRefresh.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btRefresh.UseVisualStyleBackColor = true;
@@ -179,7 +181,7 @@ namespace DongThucVat
             this.btXoa.Location = new System.Drawing.Point(300, 54);
             this.btXoa.Name = "btXoa";
             this.btXoa.Size = new System.Drawing.Size(150, 67);
-            this.btXoa.TabIndex = 2;
+            this.btXoa.TabIndex = 3;
             this.btXoa.Text = "   Xóa";
             this.btXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btXoa.UseVisualStyleBackColor = true;
@@ -196,7 +198,7 @@ namespace DongThucVat
             this.btSua.Location = new System.Drawing.Point(150, 54);
             this.btSua.Name = "btSua";
             this.btSua.Size = new System.Drawing.Size(150, 67);
-            this.btSua.TabIndex = 1;
+            this.btSua.TabIndex = 2;
             this.btSua.Text = "   Sửa";
             this.btSua.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btSua.UseVisualStyleBackColor = true;
@@ -206,8 +208,9 @@ namespace DongThucVat
             // 
             this.dgv.AllowUserToAddRows = false;
             this.dgv.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.dgv.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -478,7 +481,7 @@ namespace DongThucVat
             this.panel3.Location = new System.Drawing.Point(5, 592);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1107, 31);
-            this.panel3.TabIndex = 21;
+            this.panel3.TabIndex = 0;
             // 
             // panel1
             // 
@@ -488,6 +491,15 @@ namespace DongThucVat
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1107, 466);
             this.panel1.TabIndex = 22;
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSearch.Location = new System.Drawing.Point(689, 3);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(400, 39);
+            this.txtSearch.TabIndex = 0;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // ucLoai
             // 
@@ -549,5 +561,6 @@ namespace DongThucVat
         private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column10;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column11;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

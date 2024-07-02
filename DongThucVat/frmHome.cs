@@ -83,9 +83,19 @@ namespace DongThucVat
 
         private void btClose_Click(object sender, EventArgs e)
         {
-            saveLastSigninedTime();
-            if (isClose == true)
-                Application.Exit();
+            DialogResult dr = MessageBox.Show("Bạn có muốn thoát hoàn toàn chương trình?", "Phần mềm giám sát đa dạng sinh học", MessageBoxButtons.YesNo);
+            switch (dr)
+            {
+                case DialogResult.Yes:
+                    {
+                        saveLastSigninedTime();
+                        if (isClose == true)
+                            Application.Exit();
+                        break;
+                    }
+                case DialogResult.No:
+                    break;
+            }
         }
 
         private void AddControlsToPanel(Control c)
@@ -119,15 +129,16 @@ namespace DongThucVat
         private void btnUsers_Click(object sender, EventArgs e)
         {
             moveSidePanel(btnUsers);
-            if (Int16.Parse(is_admin.ToString()) == 1)
+            if (Int32.Parse(is_admin.ToString()) == 1)
             {
-                ucUser uc = new ucUser();
+                ucChonAdmin uc = new ucChonAdmin();
+                uc.idChonAdmin = id;
                 AddControlsToPanel(uc);
             }
-            if (Int16.Parse(is_admin.ToString()) == 2 || Int16.Parse(is_admin.ToString()) == 3)
+            if (Int32.Parse(is_admin.ToString()) == 2 || Int32.Parse(is_admin.ToString()) == 3)
             {
                 ucUserInfo uc = new ucUserInfo();
-                uc.Id = Int32.Parse(id);
+                uc.Id = id;
                 AddControlsToPanel(uc);
             }
             btBack.Visible = false;
@@ -137,7 +148,7 @@ namespace DongThucVat
         private void btDongVat_Click(object sender, EventArgs e)
         {
             moveSidePanel(btDongVat);
-            if (Int16.Parse(is_admin.ToString()) == 3)
+            if (Int32.Parse(is_admin.ToString()) == 3)
             {
                 ucSearch uc = new ucSearch();
                 uc.Loai = 0;
@@ -177,13 +188,13 @@ namespace DongThucVat
         {
             conn = Connect.ConnectDB();
             lbFirstName.Text = name + ".";
-            if (Int16.Parse(is_admin.ToString()) == 1)
+            if (Int32.Parse(is_admin.ToString()) == 1)
                 lbRole.Text = "Admin.";
-            if (Int16.Parse(is_admin.ToString()) == 2)
+            if (Int32.Parse(is_admin.ToString()) == 2)
             {
                 lbRole.Text = "Quản lý.";
             }
-            if (Int16.Parse(is_admin.ToString()) == 3)
+            if (Int32.Parse(is_admin.ToString()) == 3)
             {
                 lbRole.Text = "Nhân viên.";
                 btSettings.Visible = false;
@@ -242,7 +253,7 @@ namespace DongThucVat
         private void btThucVat_Click(object sender, EventArgs e)
         {
             moveSidePanel(btThucVat);
-            if (Int16.Parse(is_admin.ToString()) == 3)
+            if (Int32.Parse(is_admin.ToString()) == 3)
             {
                 ucSearch uc = new ucSearch();
                 uc.Loai = 1;

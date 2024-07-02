@@ -16,8 +16,8 @@ namespace DongThucVat
         SqlConnection conn;
         string sql = "";
 
-        private int id;
-        public int Id { get => id; set => id = value; }
+        private string id;
+        public string Id { get => id; set => id = value; }
 
         public ucUserInfo()
         {

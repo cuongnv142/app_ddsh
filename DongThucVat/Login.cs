@@ -110,7 +110,15 @@ namespace DongThucVat
 
         private void btClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult dr = MessageBox.Show("Bạn có muốn thoát hoàn toàn chương trình?", "Phần mềm giám sát đa dạng sinh học", MessageBoxButtons.YesNo);
+            switch (dr)
+            {
+                case DialogResult.Yes:
+                    Application.Exit();
+                    break;
+                case DialogResult.No:
+                    break;
+            }
         }
 
         private void lbQuenMatKhau_Click(object sender, EventArgs e)

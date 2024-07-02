@@ -25,8 +25,6 @@ namespace DongThucVat
             InitializeComponent();
             groupBox1.ForeColor = Color.FromArgb(255, 0, 127, 24);
             groupBox2.ForeColor = Color.FromArgb(255, 0, 127, 24);
-
-
         }
 
         private void ucUser_Load(object sender, EventArgs e)
@@ -81,7 +79,7 @@ namespace DongThucVat
         {
             if (conn.State != ConnectionState.Open)
                 conn.Open();
-            sql = "SELECT * FROM [user]";
+            sql = "SELECT * FROM [user] where is_admin = 2 or is_admin = 3";
             SqlCommand cmd = new SqlCommand(sql, conn);
             SqlDataAdapter daDGV = new SqlDataAdapter();
             daDGV.SelectCommand = cmd;
@@ -90,6 +88,7 @@ namespace DongThucVat
 
             DataTable dtDGV = new DataTable();
             daDGV.Fill(dtDGV);
+
 
             dgv.DataSource = dtDGV;
             dgv.Refresh();
@@ -153,7 +152,7 @@ namespace DongThucVat
                 cmd.Parameters.Add("@Gender", SqlDbType.NVarChar).Value = cbGioiTinh.SelectedIndex == 0 ? "" : cbGioiTinh.SelectedItem.ToString();
                 cmd.Parameters.Add("@Dob", SqlDbType.Date).Value = DateTime.Parse(dtpNgaySinh.Value.ToString("yyyy/MM/dd"));
                 cmd.Parameters.Add("@CreatedAt", SqlDbType.DateTime).Value = createdAt;
-                cmd.Parameters.Add("@IsAdmin", SqlDbType.TinyInt).Value = rbtQL.Checked ? 2 : 3;
+                cmd.Parameters.Add("@IsAdmin", SqlDbType.TinyInt).Value = rbtQL.Checked ? (byte)2 : (byte)3;
                 cmd.Parameters.Add("@Status", SqlDbType.Bit).Value = rbtOn.Checked ? 1 : 0;
 
 
@@ -174,7 +173,7 @@ namespace DongThucVat
                 cmd.Parameters.Add("@Gender", SqlDbType.NVarChar).Value = cbGioiTinh.SelectedIndex == 0 ? "" : cbGioiTinh.SelectedItem.ToString();
                 cmd.Parameters.Add("@Dob", SqlDbType.Date).Value = DateTime.Parse(dtpNgaySinh.Value.ToString("yyyy/MM/dd"));
                 cmd.Parameters.Add("@UpdatedAt", SqlDbType.DateTime).Value = updatedAt;
-                cmd.Parameters.Add("@IsAdmin", SqlDbType.TinyInt).Value = rbtQL.Checked ? 2 : 3;
+                cmd.Parameters.Add("@IsAdmin", SqlDbType.TinyInt).Value = rbtQL.Checked ? (byte)2 : (byte)3;
                 cmd.Parameters.Add("@Status", SqlDbType.Bit).Value = rbtOn.Checked ? 1 : 0;
                 cmd.ExecuteNonQuery();
                 cmd.Dispose();
@@ -252,6 +251,46 @@ namespace DongThucVat
                     dgvLoad();
                     vitri = null;
                 }
+            }
+        }
+
+        private void dgv_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            //Định dạng cột
+            if (dgv.Columns[e.ColumnIndex].Name == "is_admin" && e.Value != null)
+            {
+                byte role = (byte)e.Value;
+                switch (role)
+                {
+                    case 2:
+                        e.Value = "Quản lý";
+                        break;
+                    case 3:
+                        e.Value = "Nhân viên";
+                        break;
+                    default:
+                        e.Value = "";
+                        break;
+                }
+                e.FormattingApplied = true;
+            }
+
+            if (dgv.Columns[e.ColumnIndex].Name == "status" && e.Value != null)
+            {
+                bool status = (bool)e.Value;
+                switch (status)
+                {
+                    case true:
+                        e.Value = "Không khóa";
+                        break;
+                    case false:
+                        e.Value = "Khóa";
+                        break;
+                    default:
+                        e.Value = "";
+                        break;
+                }
+                e.FormattingApplied = true;
             }
         }
 

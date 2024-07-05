@@ -252,6 +252,27 @@ namespace DongThucVat
             await LoadComboBoxAsync(cbHo, "Họ", cbBo.SelectedIndex > 0 ?
                 "SELECT id, name FROM Ho WHERE loai = " + loai + " AND id_dtv_bo = " + Int32.Parse(cbBo.SelectedValue.ToString()) :
                 "SELECT id, name FROM Ho WHERE loai = " + loai);
+            if (loai == 0)
+            {
+                // Thay đổi items cho combobox cbNDCP khi loai = 0
+                cbND84.Items.Clear();
+                cbND84.Items.AddRange(new object[] { "Nghị định 84/NĐ-CP", "Nhóm IB", "Nhóm IIB" });
+                cbND84.SelectedIndex = 0; // Chọn mặc định item đầu tiên
+                cbND84.Items.Clear();
+                cbND84.Items.AddRange(new object[] { "Nghị định 64/NĐ-CP", "Nhóm IB", "Nhóm IIB" });
+                cbND84.SelectedIndex = 0; // Chọn mặc định item đầu tiên
+
+            }
+            if (loai == 1)
+            {
+                // Thay đổi items cho combobox cbNDCP khi loai = 1
+                cbND64.Items.Clear();
+                cbND64.Items.AddRange(new object[] { "Nghị định 84/NĐ-CP", "Nhóm IA", "Nhóm IIA" });
+                cbND64.SelectedIndex = 0; // Chọn mặc định item đầu tiên
+                cbND64.Items.Clear();
+                cbND64.Items.AddRange(new object[] { "Nghị định 64/NĐ-CP", "Nhóm IA", "Nhóm IIA" });
+                cbND64.SelectedIndex = 0; // Chọn mặc định item đầu tiên
+            }
             cbIUCN.SelectedIndex = 0; cbSDVN.SelectedIndex = 0; cbND84.SelectedIndex = 0; cbND64.SelectedIndex = 0;
             await LoadDataGridAsync();
         }

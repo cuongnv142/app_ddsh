@@ -51,51 +51,63 @@ namespace DongThucVat
             {
                 this.Invoke((MethodInvoker)delegate
                 {
-                    dgvLoad(); // Gọi lại phương thức từ luồng UI chính
+                    dgvLoad(); // Call the method again from the main UI thread
                 });
                 return;
             }
+
             using (SqlConnection conn = Connect.ConnectDB())
             {
                 conn.Open();
-                // Lấy tổng số dòng dữ liệu trong bảng "Loai"
+
+                // Calculate total number of rows
                 string countSql = $"SELECT COUNT(*) FROM Loai WHERE loai = {loai}";
                 SqlCommand countCmd = new SqlCommand(countSql, conn);
                 int totalRows = (int)countCmd.ExecuteScalar();
                 countCmd.Dispose();
 
-                // Tính totalPages
+                // Calculate totalPages
                 int totalPages = (int)Math.Ceiling((double)totalRows / pageSize);
 
                 int offset = (currentPage - 1) * pageSize;
-                if (idFK == 0 && search == "")
+
+                // Construct SQL query based on conditions
+                if (idFK == 0 && string.IsNullOrEmpty(search))
+                {
                     sql = $@"SELECT * FROM (
-                        SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS STT, l.*, h.name AS namefk
+                        SELECT ROW_NUMBER() OVER (ORDER BY l.id DESC) AS STT, l.*, h.name AS namefk
                         FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
                         WHERE l.loai = {loai}
-                     ) AS NumberedRows
-                     WHERE STT > {offset} AND STT <= {offset + pageSize}";
-                if (idFK == 0 && search != "")
+                    ) AS NumberedRows
+                    WHERE STT > {offset} AND STT <= {offset + pageSize}";
+                }
+                else if (idFK == 0 && !string.IsNullOrEmpty(search))
+                {
                     sql = $@"SELECT * FROM (
-                        SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS STT, l.*, h.name AS namefk
+                        SELECT ROW_NUMBER() OVER (ORDER BY l.id DESC) AS STT, l.*, h.name AS namefk
                         FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
                         WHERE l.loai = {loai} AND (l.name LIKE N'%{search}%' OR l.name_latinh LIKE N'%{search}%')
-                     ) AS NumberedRows
-                     WHERE STT > {offset} AND STT <= {offset + pageSize}";
-                if (idFK != 0 && search == "")
+                    ) AS NumberedRows
+                    WHERE STT > {offset} AND STT <= {offset + pageSize}";
+                }
+                else if (idFK != 0 && string.IsNullOrEmpty(search))
+                {
                     sql = $@"SELECT * FROM (
-                        SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS STT, l.*, h.name AS namefk
+                        SELECT ROW_NUMBER() OVER (ORDER BY l.id DESC) AS STT, l.*, h.name AS namefk
                         FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
                         WHERE l.loai = {loai} AND l.id_dtv_ho = {cb.SelectedValue}
-                     ) AS NumberedRows
-                     WHERE STT > {offset} AND STT <= {offset + pageSize}";
-                if (idFK != 0 && search != "")
+                    ) AS NumberedRows
+                    WHERE STT > {offset} AND STT <= {offset + pageSize}";
+                }
+                else if (idFK != 0 && !string.IsNullOrEmpty(search))
+                {
                     sql = $@"SELECT * FROM (
-                        SELECT ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS STT, l.*, h.name AS namefk
+                        SELECT ROW_NUMBER() OVER (ORDER BY l.id DESC) AS STT, l.*, h.name AS namefk
                         FROM Loai l JOIN Ho h ON l.id_dtv_ho = h.id
                         WHERE l.loai = {loai} AND l.id_dtv_ho = {cb.SelectedValue} AND (l.name LIKE N'%{search}%' OR l.name_latinh LIKE N'%{search}%')
-                     ) AS NumberedRows
-                     WHERE STT > {offset} AND STT <= {offset + pageSize}";
+                    ) AS NumberedRows
+                    WHERE STT > {offset} AND STT <= {offset + pageSize}";
+                }
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {

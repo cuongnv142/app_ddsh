@@ -252,9 +252,28 @@ namespace DongThucVat
             xoaTrang(ktThem);
             cbLoad();
             if (loai == 0)
+            {
                 lbNganh.Text = "LOÀI ĐỘNG VẬT";
+                // Thay đổi items cho combobox cbNDCP khi loai = 0
+                cbNDCP.Items.Clear();
+                cbNDCP.Items.AddRange(new object[] { "Nghị định 84/NĐ-CP", "Nhóm IB", "Nhóm IIB" });
+                cbNDCP.SelectedIndex = 0; // Chọn mặc định item đầu tiên
+                cbND64CP.Items.Clear();
+                cbND64CP.Items.AddRange(new object[] { "Nghị định 64/NĐ-CP", "Nhóm IB", "Nhóm IIB" });
+                cbND64CP.SelectedIndex = 0; // Chọn mặc định item đầu tiên
+
+            }
             if (loai == 1)
+            {
                 lbNganh.Text = "LOÀI THỰC VẬT";
+                // Thay đổi items cho combobox cbNDCP khi loai = 1
+                cbNDCP.Items.Clear();
+                cbNDCP.Items.AddRange(new object[] { "Nghị định 84/NĐ-CP", "Nhóm IA", "Nhóm IIA" });
+                cbNDCP.SelectedIndex = 0; // Chọn mặc định item đầu tiên
+                cbND64CP.Items.Clear();
+                cbND64CP.Items.AddRange(new object[] { "Nghị định 64/NĐ-CP", "Nhóm IA", "Nhóm IIA" });
+                cbND64CP.SelectedIndex = 0; // Chọn mặc định item đầu tiên
+            }
             imageDel = false;
             if (ktThem == false)
             {

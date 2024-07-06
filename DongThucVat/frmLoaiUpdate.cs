@@ -17,7 +17,7 @@ namespace DongThucVat
     public partial class frmLoaiUpdate : Form
     {
         SqlConnection conn;
-        string sql = "";
+        string sql = "", tencu;
         public event Action loadDGV;
         bool imageDel;
 
@@ -88,7 +88,8 @@ namespace DongThucVat
             cbNDCP.SelectedItem = dt.Rows[0]["muc_do_bao_ton_ndcp"].ToString();
             cbND64CP.SelectedItem = dt.Rows[0]["muc_do_bao_ton_nd64cp"].ToString();
             rtxtCongDung.Text = dt.Rows[0]["gia_tri_su_dung"].ToString();
-            rtxtDacDiem.Text = dt.Rows[0]["dac_diem"].ToString(); ;
+            rtxtDacDiem.Text = dt.Rows[0]["dac_diem"].ToString();
+            tencu = txtTenLatinh.Text;
             //if (Boolean.Parse(dt.Rows[0]["status"].ToString()) == true)
             //    rbtOn.Checked = true;
             //if (Boolean.Parse(dt.Rows[0]["status"].ToString()) == false)
@@ -312,6 +313,32 @@ namespace DongThucVat
         //    return fullPath;
         //}
 
+        public bool kiemTraTenTrung(bool ktThem, string tenmoi)
+        {
+            if (ktThem == true)
+            {
+                sql = "SELECT * FROM loai WHERE name_latinh = N'" + tenmoi + "'";
+                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                sql = "SELECT * FROM loai WHERE name_latinh = N'" + tenmoi + "' AND name_latinh <> N'" + tencu + "'";
+                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
         private void btLuu_Click(object sender, EventArgs e)
         {
             try
@@ -332,7 +359,14 @@ namespace DongThucVat
                 }
                 if (conn.State != ConnectionState.Open)
                     conn.Open();
-                SqlTransaction transaction = conn.BeginTransaction();
+                if (kiemTraTenTrung(ktThem, txtTenLatinh.Text) == true)
+                {
+                    MessageBox.Show("Tên Latinh bạn nhập đã tồn tại!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtTenLatinh.Focus();
+                    return;
+                }
+                SqlTransaction transaction = conn.BeginTransaction();               
                 try
                 {
                     if (ktThem == true)

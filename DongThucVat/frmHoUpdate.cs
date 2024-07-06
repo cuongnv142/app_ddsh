@@ -72,6 +72,32 @@ namespace DongThucVat
             this.Dispose();
         }
 
+        public bool kiemTraTenTrung(bool ktThem, string tenmoi)
+        {
+            if (ktThem == true)
+            {
+                sql = "SELECT * FROM ho WHERE name_latinh = N'" + tenmoi + "'";
+                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                sql = "SELECT * FROM ho WHERE name_latinh = N'" + tenmoi + "' AND name_latinh <> N'" + tenLatinh + "'";
+                SqlDataAdapter da = new SqlDataAdapter(sql, conn);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                if (dt.Rows.Count > 0)
+                    return true;
+                else
+                    return false;
+            }
+        }
+
         private void btLuu_Click(object sender, EventArgs e)
         {
             if (txtTenTiengViet.Text == "" && txtTenLatinh.Text == "")
@@ -90,6 +116,13 @@ namespace DongThucVat
             }
             if (conn.State != ConnectionState.Open)
                 conn.Open();
+            if (kiemTraTenTrung(ktThem, txtTenLatinh.Text) == true)
+            {
+                MessageBox.Show("Tên Latinh bạn nhập đã tồn tại!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                txtTenLatinh.Focus();
+                return;
+            }
             if (ktThem == true)
             {
                 if (MessageBox.Show("Bạn có muốn thêm họ " + txtTenTiengViet.Text + " không?", "Thông báo",
